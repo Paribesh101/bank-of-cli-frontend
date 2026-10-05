@@ -1,1 +1,13 @@
-<p>button works!</p>
+<button
+[class] = "variant"
+[disabled] = "disabled || loading"
+(click) = "onClick()">
+
+    @if(loading){
+        <mat-progress-spinner diameter="18" mode="indeterminate"></mat-progress-spinner>
+    } @else {
+        {{ label }}
+    }
+
+
+</button>
