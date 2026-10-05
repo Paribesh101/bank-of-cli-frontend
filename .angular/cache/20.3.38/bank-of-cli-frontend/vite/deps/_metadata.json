@@ -1,0 +1,43 @@
+{
+  "hash": "20828068",
+  "configHash": "05a52ed2",
+  "lockfileHash": "89b81a15",
+  "browserHash": "22396b5e",
+  "optimized": {
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "8f963ee8",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "39502a72",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "b2ba3576",
+      "needsInterop": false
+    },
+    "zone.js": {
+      "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
+      "file": "zone__js.js",
+      "fileHash": "a46e3d0f",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-4KKA6VRJ": {
+      "file": "chunk-4KKA6VRJ.js"
+    },
+    "chunk-TBIPMNIT": {
+      "file": "chunk-TBIPMNIT.js"
+    },
+    "chunk-WDMUDEB6": {
+      "file": "chunk-WDMUDEB6.js"
+    }
+  }
+}
