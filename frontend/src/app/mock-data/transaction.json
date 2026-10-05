@@ -1,0 +1,149 @@
+[
+  {
+    "_id": 1,
+    "timestamp": "2020-06-22 19:10:25-07",
+    "type": "deposit",
+    "amount": 150.00,
+    "account_id": 1
+  },
+  {
+    "_id": 2,
+    "timestamp": "2020-06-23 09:15:42-07",
+    "type": "transfer",
+    "amount": 25.00,
+    "account_id": 1,
+    "related_account_id": 2
+  },
+  {
+    "_id": 3,
+    "timestamp": "2020-06-24 12:30:18-07",
+    "type": "withdraw",
+    "amount": 20.00,
+    "account_id": 1
+  },
+  {
+    "_id": 4,
+    "timestamp": "2020-06-25 16:45:33-07",
+    "type": "deposit",
+    "amount": 100.00,
+    "account_id": 2
+  },
+  {
+    "_id": 5,
+    "timestamp": "2020-06-26 10:20:11-07",
+    "type": "transfer",
+    "amount": 30.00,
+    "account_id": 2,
+    "related_account_id": 3
+  },
+  {
+    "_id": 6,
+    "timestamp": "2020-06-27 14:05:27-07",
+    "type": "withdraw",
+    "amount": 15.00,
+    "account_id": 2
+  },
+  {
+    "_id": 7,
+    "timestamp": "2020-06-28 08:40:52-07",
+    "type": "deposit",
+    "amount": 200.00,
+    "account_id": 3
+  },
+  {
+    "_id": 8,
+    "timestamp": "2020-06-29 17:25:09-07",
+    "type": "transfer",
+    "amount": 40.00,
+    "account_id": 3,
+    "related_account_id": 4
+  },
+  {
+    "_id": 9,
+    "timestamp": "2020-06-30 11:55:44-07",
+    "type": "withdraw",
+    "amount": 35.00,
+    "account_id": 3
+  },
+  {
+    "_id": 10,
+    "timestamp": "2020-07-01 13:15:26-07",
+    "type": "deposit",
+    "amount": 125.00,
+    "account_id": 4
+  },
+  {
+    "_id": 11,
+    "timestamp": "2020-07-02 09:35:17-07",
+    "type": "transfer",
+    "amount": 20.00,
+    "account_id": 4,
+    "related_account_id": 5
+  },
+  {
+    "_id": 12,
+    "timestamp": "2020-07-03 18:10:38-07",
+    "type": "withdraw",
+    "amount": 25.00,
+    "account_id": 4
+  },
+  {
+    "_id": 13,
+    "timestamp": "2020-07-04 10:45:21-07",
+    "type": "deposit",
+    "amount": 175.00,
+    "account_id": 5
+  },
+  {
+    "_id": 14,
+    "timestamp": "2020-07-05 15:30:49-07",
+    "type": "transfer",
+    "amount": 50.00,
+    "account_id": 5,
+    "related_account_id": 1
+  },
+  {
+    "_id": 15,
+    "timestamp": "2020-07-06 12:20:15-07",
+    "type": "withdraw",
+    "amount": 40.00,
+    "account_id": 5
+  },
+  {
+    "_id": 16,
+    "timestamp": "2020-07-07 08:55:32-07",
+    "type": "deposit",
+    "amount": 75.00,
+    "account_id": 1
+  },
+  {
+    "_id": 17,
+    "timestamp": "2020-07-08 14:40:06-07",
+    "type": "transfer",
+    "amount": 35.00,
+    "account_id": 3,
+    "related_account_id": 1
+  },
+  {
+    "_id": 18,
+    "timestamp": "2020-07-09 16:15:28-07",
+    "type": "withdraw",
+    "amount": 10.00,
+    "account_id": 2
+  },
+  {
+    "_id": 19,
+    "timestamp": "2020-07-10 11:05:43-07",
+    "type": "deposit",
+    "amount": 90.00,
+    "account_id": 4
+  },
+  {
+    "_id": 20,
+    "timestamp": "2020-07-11 19:25:19-07",
+    "type": "transfer",
+    "amount": 45.00,
+    "account_id": 5,
+    "related_account_id": 2
+  }
+]
