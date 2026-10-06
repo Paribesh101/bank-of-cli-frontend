@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
-  imports: [],
   selector: 'app-spinner',
-  styleUrl: './spinner.css',
+  imports: [MatProgressSpinnerModule],
   templateUrl: './spinner.html',
+  styleUrl: './spinner.css'
 })
-export class Spinner {}
+export class Spinner {
+  @Input() diameter: number = 40;
+}
