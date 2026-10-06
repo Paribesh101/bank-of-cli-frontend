@@ -45,8 +45,10 @@ export function getAccountById(id: number) {
     return account;
 }
 
-export function getTransactions() {
-    return transactions.map(transaction => mapTransaction(transaction as JsonTransaction));
+export function getTransactionsByAccountId(id: number) {
+    return transactions
+        .filter(transaction => transaction.account_id == id)
+            .map(transaction => mapTransaction(transaction as JsonTransaction));
 }
 
 export function deposit(amount: number, accountId: number) {
