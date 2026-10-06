@@ -5,8 +5,6 @@ import { Transaction } from '../contracts/transaction';
 import { getAccounts, getTransactionsByAccountId } from '../mock/api';
 
 // An account that exists in the system always has an id and a balance.
-// The Account contract makes them optional (for registration), so the service
-// narrows them here once instead of checking for undefined everywhere.
 type StoredAccount = Account & { id: number; balance: number };
 
 // What the UI sees: an existing account, without the password.
