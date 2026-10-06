@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 12px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+}
+
+form {
+    display: flex;
+
+}
+
+.container {
+    padding: 16px;
+    border-radius: 5px;
+    border: solid 1px #22396F;
+    background-color: #010736;
+}
+
+.form-input {
+    
+}
