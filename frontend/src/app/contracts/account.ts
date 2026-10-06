@@ -1,8 +1,8 @@
 export interface Account {
-  id: number;
-  username: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  balance: number;
-}
+    _id: number;
+    username: string;
+    password: string;
+    first_name: string;
+    last_name: string;
+    balance: number;
+  }

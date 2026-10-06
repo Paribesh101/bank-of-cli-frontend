@@ -1,8 +1,13 @@
+export type TransactionType =
+  | 'deposit'
+  | 'withdraw'
+  | 'transfer';
+
 export interface Transaction {
-  id: number;
-  accountId: number;
-  type: string;
-  amount: number;
+  _id: number;
   timestamp: string;
-  relatedAccountId?: number;
+  type: TransactionType;
+  amount: number;
+  account_id: number;
+  related_account_id?: number;
 }
