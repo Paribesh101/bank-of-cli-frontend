@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import * as api from './mock/api'
 
 @Component({
   imports: [RouterOutlet],
@@ -11,5 +10,3 @@ import * as api from './mock/api'
 export class App {
   protected readonly title = signal('frontend');
 }
-
-console.log(api.getTransactions());
