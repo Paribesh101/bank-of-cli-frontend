@@ -21,6 +21,19 @@ interface JsonAccount {
     balance: number
 }
 
+
+export function addAccount(account: Account): Account {
+    // Pretends to add an account and return it with the id and balance filled
+    return {
+        id: 6,
+        username: account.username,
+        password: account.password,
+        firstName: account.firstName,
+        lastName: account.lastName,
+        balance: 0
+    }
+}
+
 export function getAccounts() {
     return accounts.map(account => mapAccount(account as JsonAccount));
 }
@@ -32,8 +45,31 @@ export function getAccountById(id: number) {
     return account;
 }
 
-export function getTransactions() {
-    return transactions.map(transaction => mapTransaction(transaction as JsonTransaction));
+export function getTransactionsByAccountId(id: number) {
+    return transactions
+        .filter(transaction => transaction.account_id == id)
+            .map(transaction => mapTransaction(transaction as JsonTransaction));
+}
+
+export function deposit(amount: number, accountId: number) {
+    const selectedAccount: JsonAccount = accounts.filter(account => account._id == accountId)[0] as JsonAccount;
+    if (!selectedAccount)
+        throw new Error("Could not find account with id: " + accountId);
+}
+
+export function withdraw(amount: number, accountId: number) {
+    const selectedAccount: JsonAccount = accounts.filter(account => account._id == accountId)[0] as JsonAccount;
+    if (!selectedAccount)
+        throw new Error("Could not find account with id: " + accountId);
+}
+
+export function transfer(amount: number, accountId: number, relatedAccountId: number) {
+    const selectedAccount: JsonAccount = accounts.filter(account => account._id == accountId)[0] as JsonAccount;
+    if (!selectedAccount)
+        throw new Error("Could not find account with id: " + accountId);
+    const relatedAccount: JsonAccount = accounts.filter(account => account._id == relatedAccountId)[0] as JsonAccount;
+    if (!relatedAccount)
+        throw new Error("Could not find related account with id: " + relatedAccountId);
 }
 
 function mapAccount(account: JsonAccount): Account {
