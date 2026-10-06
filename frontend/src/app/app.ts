@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import * as api from './mock/api'
+import { Dashboard } from './components/dashboard/dashboard';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Dashboard],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

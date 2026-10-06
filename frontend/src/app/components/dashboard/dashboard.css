@@ -1,35 +1,9 @@
 .dashboard {
     min-height: 100vh;
     /* background-color: #010736; */
-    background: linear-gradient(to right, #010736, #22396F);
+    background: linear-gradient(to top, #010736, #22396F);
     color: white;
     padding: 40px;
 }
 
-.balance-section {
-    max-width: 800px;
-    margin: 0 auto;
-}
 
-.balance-label {
-    font-size: 12px;
-    font-family: "Lucida Console", "Courier New", monospace;
-    letter-spacing: 5px;
-    color: FCF1D0;
-    margin-bottom: 20px;
-}
-
-.balance {
-    font-size: 42px;
-    font-family: "Lucida Console", "Courier New", monospace;
-    letter-spacing: 3px;
-    margin: 0;
-}
-
-.last-updated {
-    font-size: 12px;
-    font-family: "Lucida Console", "Courier New", monospace;
-    letter-spacing: 5px;
-    color: #FCF1D0;
-    margin-top: 15px;
-}
