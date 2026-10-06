@@ -2,16 +2,15 @@ import { Injectable, InjectionToken, computed, inject, signal } from '@angular/c
 import { Observable, defer, finalize, forkJoin, map, tap, timer } from 'rxjs';
 import { Account } from '../contracts/account';
 import { Transaction } from '../contracts/transaction';
-import { getAccounts, getTransactions } from '../mock/api';
+import { getAccounts, getTransactionsByAccountId } from '../mock/api';
 
-/* ============================================================================
- * 1. TYPES
- * ========================================================================== */
+// An account that exists in the system always has an id and a balance.
+// The Account contract makes them optional (for registration), so the service
+// narrows them here once instead of checking for undefined everywhere.
+type StoredAccount = Account & { id: number; balance: number };
 
-export type TransactionType = 'deposit' | 'withdraw' | 'transfer';
-
-/** What the UI is allowed to see. Passwords never leave the service layer. */
-export type AccountSummary = Omit<Account, 'password'>;
+// What the UI sees: an existing account, without the password.
+export type AccountSummary = Omit<StoredAccount, 'password'>;
 
 export interface TransactionResult {
   account: AccountSummary;   // account state AFTER the transaction
@@ -25,24 +24,12 @@ export type BankErrorCode =
   | 'SAME_ACCOUNT'
   | 'NO_ACTIVE_ACCOUNT';
 
-/** One error type for the whole app, so modals/toasts can switch on `code`. */
 export class BankError extends Error {
   constructor(public readonly code: BankErrorCode, message: string) {
     super(message);
     this.name = 'BankError';
   }
 }
-
-/* ============================================================================
- * 2. DATA SOURCE ABSTRACTION (Dependency Inversion)
- * BankService depends on this interface, never on the mock directly.
- * When the real backend exists, write an HttpBankDataSource that implements
- * the same interface and register it in app.config.ts:
- *
- *   providers: [{ provide: BANK_DATA_SOURCE, useClass: HttpBankDataSource }]
- *
- * No component and no line of BankService has to change.
- * ========================================================================== */
 
 export interface BankDataSource {
   getAccount(id: number): Observable<AccountSummary>;
@@ -56,10 +43,6 @@ export const BANK_DATA_SOURCE = new InjectionToken<BankDataSource>('BankDataSour
   providedIn: 'root',
   factory: () => new MockBankDataSource(),
 });
-
-/* ============================================================================
- * 3. SHARED RULES (used by both the client-side checks and the mock "server")
- * ========================================================================== */
 
 function roundMoney(value: number): number {
   return Math.round(value * 100) / 100;
@@ -81,20 +64,25 @@ function assertSufficientFunds(balance: number, amount: number): void {
   }
 }
 
-function toSummary(account: Account): AccountSummary {
+function toSummary(account: StoredAccount): AccountSummary {
   const { password: _password, ...summary } = account;
   return summary;
 }
 
-/* ============================================================================
- * 4. MOCK DATA SOURCE (pretends to be the backend)
- * ========================================================================== */
-
 const MOCK_LATENCY_MS = 600;
 
 export class MockBankDataSource implements BankDataSource {
-  private readonly accounts: Account[] = getAccounts().map((a) => ({ ...a }));
-  private readonly transactions: Transaction[] = getTransactions().map((t) => ({ ...t }));
+  // Seed accounts: skip any without an id, default a missing balance to 0.
+  private readonly accounts: StoredAccount[] = getAccounts().flatMap((a) =>
+    a.id === undefined ? [] : [{ ...a, id: a.id, balance: a.balance ?? 0 }],
+  );
+
+  // Seed transactions: api.ts only offers a per-account lookup, so collect
+  // each account's transactions into one list (needed for incoming transfers
+  // and for generating new ids).
+  private readonly transactions: Transaction[] = this.accounts
+    .flatMap((a) => getTransactionsByAccountId(a.id))
+    .map((t) => ({ ...t }));
 
   constructor(private readonly latencyMs: number = MOCK_LATENCY_MS) {}
 
@@ -146,12 +134,12 @@ export class MockBankDataSource implements BankDataSource {
     });
   }
 
-  /** Runs `work` after the simulated delay. Thrown errors become Observable errors. */
+  // Runs `work` after the simulated delay. Thrown errors become Observable errors.
   private respond<T>(work: () => T): Observable<T> {
     return timer(this.latencyMs).pipe(map(() => work()));
   }
 
-  private findAccount(id: number): Account {
+  private findAccount(id: number): StoredAccount {
     const account = this.accounts.find((a) => a.id === id);
     if (!account) {
       throw new BankError('ACCOUNT_NOT_FOUND', `Account #${id} was not found.`);
@@ -160,7 +148,7 @@ export class MockBankDataSource implements BankDataSource {
   }
 
   private record(
-    type: TransactionType,
+    type: string,
     amount: number,
     accountId: number,
     relatedAccountId?: number,
@@ -178,14 +166,6 @@ export class MockBankDataSource implements BankDataSource {
   }
 }
 
-/* ============================================================================
- * 5. BANK SERVICE (the only thing components inject)
- * - Holds the active account + its history as signals, so every component
- *   showing balance/history updates automatically after a transaction.
- * - Validates on the client first (fast feedback), then calls the data source.
- * - Every method returns an Observable; errors are always BankError.
- * ========================================================================== */
-
 @Injectable({ providedIn: 'root' })
 export class BankService {
   private readonly api = inject(BANK_DATA_SOURCE);
@@ -194,16 +174,16 @@ export class BankService {
   private readonly _transactions = signal<Transaction[]>([]);
   private readonly _pending = signal(0);
 
-  /** The logged-in user's account, or null before loadAccount() / after clear(). */
+  // The logged-in user's account, or null before loadAccount() / after clear().
   readonly account = this._account.asReadonly();
-  /** History for the active account, newest first. Includes incoming transfers. */
+  // History for the active account, newest first. Includes incoming transfers.
   readonly transactions = this._transactions.asReadonly();
   readonly balance = computed(() => this._account()?.balance ?? 0);
   readonly hasTransactions = computed(() => this._transactions().length > 0);
-  /** True while any request made through this service is in flight (for spinners). */
+  // True while any request made through this service is in flight (for spinners).
   readonly isLoading = computed(() => this._pending() > 0);
 
-  /** Call once after a successful login. Loads the account and its history. */
+  // Call once after a successful login. Loads the account and its history.
   loadAccount(accountId: number): Observable<AccountSummary> {
     return this.track(
       forkJoin({
@@ -257,10 +237,8 @@ export class BankService {
     });
   }
 
-  /**
-   * Helper for the history table: 'in' means money came into the active
-   * account (deposit or incoming transfer), 'out' means it left.
-   */
+  // Helper for the history table: 'in' means money came into the active
+  // account (deposit or incoming transfer), 'out' means it left.
   getDirection(transaction: Transaction): 'in' | 'out' {
     if (transaction.type === 'deposit') return 'in';
     if (transaction.type === 'transfer') {
@@ -269,7 +247,7 @@ export class BankService {
     return 'out';
   }
 
-  /** Call on logout. */
+  // Call on logout.
   clear(): void {
     this._account.set(null);
     this._transactions.set([]);
@@ -294,7 +272,7 @@ export class BankService {
     return account.id;
   }
 
-  /** Counts in-flight requests so `isLoading` stays correct with parallel calls. */
+  // Counts in-flight requests so `isLoading` stays correct with parallel calls.
   private track<T>(source: Observable<T>): Observable<T> {
     return defer(() => {
       this._pending.update((n) => n + 1);
