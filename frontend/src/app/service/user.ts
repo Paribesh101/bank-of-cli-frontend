@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { addAccount, getAccounts } from '../mock/api';
 
 /**
  * User service that provides basic mock authentication functionality.
@@ -9,11 +10,7 @@ import { Injectable } from '@angular/core';
 })
 export class User {
 
-  // Hardcoded credentials for demonstration purposes.
-  validCredentials = {
-    username: 'dev',
-    password: 'dev'
-  }
+  private readonly SESSION_KEY = 'accountId';
 
   /**
    * Attempts to log in a user by comparing input credentials to the hardcoded ones.
@@ -25,24 +22,35 @@ export class User {
    */
 
   login(username: string, password: string): boolean {
-    const usernameValid = username === this.validCredentials.username;
-    const passwordValid = password === this.validCredentials.password;
 
-    // Both username and password must be valid to authenticate.
-    const isAuthenticated = usernameValid && passwordValid;
+    
 
-    // Store authentication status in sessionStorage if login is successful.
-    if (isAuthenticated) {
-      sessionStorage.setItem('authenticated', 'true');
+    const account = getAccounts().find(
+      
+      a => username === a.username && password === a.password
+    );
+    if(!account){
+      return false
     }
-
-    return isAuthenticated;
+    sessionStorage.setItem(this.SESSION_KEY, String(account.id));
+    sessionStorage.setItem('authenticated', 'true');
+    return true;
   }
 
-  /* register(username: string, password: string): boolean {
+
+  register(username: string, password: string): boolean {
+    
+    const exists = getAccounts().find(
+      a => username === a.username
+    );
+    if(exists){
+      return false
+    }
+    return false
 
 
-  } */
+
+  }
 
   /**
    * Checks if the user is currently logged in by reading sessionStorage.

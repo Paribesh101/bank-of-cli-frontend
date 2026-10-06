@@ -34,7 +34,7 @@ export class Login {
   async attemptLogin() {
     const loginSuccessful = this.userService.login(this.usernameInput, this.passwordInput);
     if (loginSuccessful) {
-      await this.router.navigate(['home']);
+      await this.router.navigate(['dashboard']);
     } else {
       this.errorMessage = 'login failed, please try again';
     }
