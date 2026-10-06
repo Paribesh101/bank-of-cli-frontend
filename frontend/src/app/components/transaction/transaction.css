@@ -4,24 +4,50 @@
 }
 
 h1 {
+    margin-bottom: 8px;
     font-size: 12px;
     font-family: "Lucida Console", "Courier New", monospace;
-    color: rgba(255, 255, 255, 0.6);
+    color: lightgray;
     letter-spacing: 1px;
 }
 
 form {
     display: flex;
+    gap: 8px;
+}
 
+input, select {
+    box-sizing: border-box;
+    padding: 8px;
+    height: 32px;
+    width: 100%;
+    border: solid 1px #262a47;
+    border-radius: 3px;
+    background-color: #0D1C42;
+    color: lightgray;
+    font-family: "Lucida Console", "Courier New", monospace;
+    align-items: center;
+}
+
+button {
+    box-sizing: border-box;
+    padding: 4px 8px;
+    border-radius: 3px;
+    width: 120px;
+    font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .container {
     padding: 16px;
     border-radius: 5px;
-    border: solid 1px #22396F;
+    border: solid 1px #393f6a;
     background-color: #010736;
 }
 
-.form-input {
-    
+.large-field {
+    width: stretch;
+}
+
+.normal-field {
+    min-width: 100px;
 }
