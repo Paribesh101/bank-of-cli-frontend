@@ -1,7 +1,8 @@
 :host {
   display: block;
   min-height: 100vh;
-  background-color: #f2f2f7; /* iOS system grouped background */
+  
+  background: linear-gradient(to top, #010736, #22396F);
 }
 
 .login-form {
@@ -17,7 +18,7 @@
   top: 4rem;
 
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 3px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', Inter, 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -37,7 +38,7 @@
   padding: 2px;
   gap: 2px;
   background-color: rgba(118, 118, 128, 0.12);
-  border-radius: 9px;
+  border-radius: 3px;
 }
 
 .login-selector button {
@@ -80,7 +81,7 @@
 .login-form input {
   padding: 0.8rem 1rem;
   border: none;
-  border-radius: 12px;
+  border-radius: 3px;
   background-color: #f2f2f7;
   color: #000;
   font-family: inherit;
@@ -103,8 +104,8 @@
   margin-top: 0.25rem;
   padding: 0.9rem;
   border: none;
-  border-radius: 14px;
-  background-color: #007aff;
+  border-radius: 3px;
+  background-color: #22396F;
   color: #fff;
   font-family: inherit;
   font-size: 1.0625rem;
@@ -127,5 +128,12 @@
   margin: 0;
   font-size: 0.8125rem;
   color: #ff3b30; /* iOS system red */
+  text-align: left;
+}
+
+.success-message {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #32ec2b; 
   text-align: left;
 }

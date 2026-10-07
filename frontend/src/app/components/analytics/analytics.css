@@ -1,22 +1,47 @@
 .container {
-    padding: 50px;
+    padding: 30px;
     border-radius: 5px;
     border: solid 1px #393f6a;
     background-color: #010736;
-    display: flex;
-    justify-content: space-between;
+    display: flex; 
+    /* justify-content: space-between; */
+}
+
+.container section {
+    justify-content: center;
+    width: stretch;
+    text-align: center;
+}
+
+.moneyInOutText {
+    font-size: 12px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    letter-spacing: 5px;
+    color: #757D6F;
+    margin-top: 1%;
 }
 
 .moneyIn {
-    font-size: 42px;
+    font-size: 25px;
     font-family: "Lucida Console", "Courier New", monospace;
+    color: #597928;
     letter-spacing: 3px;
     margin: 0;
 }
 
 .moneyOut {
-    font-size: 42px;
+    font-size: 25px;
     font-family: "Lucida Console", "Courier New", monospace;
+    color: #B93636;
     letter-spacing: 3px;
     margin: 0;
 }
+
+.netMonth {
+    font-size: 25px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color: #B93636;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
