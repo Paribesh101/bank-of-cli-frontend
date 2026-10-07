@@ -21,7 +21,6 @@ export class Transaction {
   description: string = ''
 
   ngOnInit() {
-    console.log("init");
     this.bankService.loadAccount(Number(this.accountId || 0)).subscribe();
   }
 
@@ -30,27 +29,41 @@ export class Transaction {
 
     switch (this.type) {
       case 'deposit':
-        this.bankService.deposit(this.amount).subscribe(() =>
-          this.toastService.success("Deposit successful!")
-        );
+        this.bankService.deposit(this.amount).subscribe({
+          next: value => {
+            this.toastService.success("Deposit successful!"),
+            this.resetForm();
+          },
+          error: err => this.toastService.error(err.message)
+      });
         break;
     
       case 'withdraw':
-        this.bankService.withdraw(this.amount).subscribe(() =>
-          this.toastService.success("Withdraw successful!")
-        );
+        this.bankService.withdraw(this.amount).subscribe({
+          next: value => {
+            this.toastService.success("Withdraw successful!")
+            this.resetForm();
+          },
+          error: err => this.toastService.error(err.message)
+        });
         break;
     
       case 'transfer':
-        this.bankService.transfer(this.relatedAccountId == null ? -1 : this.relatedAccountId, this.amount).subscribe(() =>
-          this.toastService.success("Transfer successful!")
-        );
+        this.bankService.transfer(this.relatedAccountId == null ? -1 : this.relatedAccountId, this.amount).subscribe({
+          next: value => {
+            this.toastService.success("Transfer successful!");
+            this.resetForm();
+          },
+          error: err => this.toastService.error(err.message)
+        });
         break;
       
       default:
         break;
     }
+  }
 
+  private resetForm() {
     this.relatedAccountId = null;
     this.amount = 0.00;
     this.description = '';

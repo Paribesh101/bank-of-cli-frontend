@@ -7,8 +7,8 @@ h1 {
     margin-bottom: 8px;
     font-size: 12px;
     font-family: "Lucida Console", "Courier New", monospace;
-    color: lightgray;
-    letter-spacing: 1px;
+    font-weight: normal;
+    color: #757D6F;
 }
 
 form {
@@ -53,6 +53,7 @@ button:not(:disabled):hover, select:hover {
 .field-container {
     display: flex;
     flex-wrap: wrap;
+    flex: 1;
     gap: 8px;
 }
 
@@ -62,12 +63,14 @@ button:not(:disabled):hover, select:hover {
 }
 
 .normal-field {
-    width:120px
+    flex: 1;
+    min-width:120px;
 }
 
 .money-field {
+    flex: 1;
     display: flex;
-    width: 120px;
+    min-width: 120px;
     align-items: center;
     border: solid 1px #262a47;
     border-radius: 3px;
@@ -82,7 +85,7 @@ button:not(:disabled):hover, select:hover {
 
 .money-field input {
     height: 100%;
-    width: 110px;
+    width: stretch;
     align-items: center;
     border: none;
     background-color: transparent;

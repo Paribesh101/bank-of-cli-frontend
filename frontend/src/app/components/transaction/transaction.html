@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>TRANSACTION</h1>
+    <h1>MAKE A TRANSACTION</h1>
     <form #transactionForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="stretch-field">
             <input type="text" name="description" [(ngModel)]="description" placeholder="Description" class="description">
@@ -21,7 +21,7 @@
                     <input type="number" name="username" [(ngModel)]="relatedAccountId" placeholder="Acct. Id" required>
                 </div>
             }
+            <button type="submit" [disabled]="transactionForm.invalid">Submit</button>
         </div>
-        <button type="submit" [disabled]="transactionForm.invalid">Submit</button>
     </form>
 </div>
