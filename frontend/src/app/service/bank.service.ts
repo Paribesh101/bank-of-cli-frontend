@@ -62,6 +62,17 @@ function assertSufficientFunds(balance: number, amount: number): void {
   }
 }
 
+function normalizeTimestamp(value: string | undefined): string {
+  if (!value) return '';
+  let iso = value.trim().replace(' ', 'T');
+  if (iso.includes('T')) {
+    iso = iso
+      .replace(/([+-]\d{2})$/, '$1:00')          // -07   -> -07:00
+      .replace(/([+-]\d{2})(\d{2})$/, '$1:$2');  // -0700 -> -07:00
+  }
+  return Number.isNaN(Date.parse(iso)) ? value : iso;
+}
+
 function toSummary(account: StoredAccount): AccountSummary {
   const { password: _password, ...summary } = account;
   return summary;
@@ -80,7 +91,7 @@ export class MockBankDataSource implements BankDataSource {
   // and for generating new ids).
   private readonly transactions: Transaction[] = this.accounts
     .flatMap((a) => getTransactionsByAccountId(a.id))
-    .map((t) => ({ ...t }));
+    .map((t) => ({ ...t, timestamp: normalizeTimestamp(t.timestamp) }));
 
   constructor(private readonly latencyMs: number = MOCK_LATENCY_MS) {}
 
@@ -94,7 +105,7 @@ export class MockBankDataSource implements BankDataSource {
       return this.transactions
         .filter((t) => t.accountId === accountId || t.relatedAccountId === accountId)
         .sort((a, b) => b.id - a.id) // newest first
-        .map((t) => ({ ...t }));
+        .map((t) => ({ ...t, timestamp: normalizeTimestamp(t.timestamp) }));
     });
   }
 
