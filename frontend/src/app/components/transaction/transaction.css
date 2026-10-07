@@ -13,6 +13,8 @@ h1 {
 
 form {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 8px;
 }
 
@@ -48,13 +50,42 @@ button:not(:disabled):hover, select:hover {
     background-color: #010736;
 }
 
+.field-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
 .stretch-field {
     width: stretch;
     min-width: 110px;
 }
 
 .normal-field {
-    min-width: 110px;
+    width:120px
+}
+
+.money-field {
+    display: flex;
+    width: 120px;
+    align-items: center;
+    border: solid 1px #262a47;
+    border-radius: 3px;
+    background-color: #0D1C42;
+}
+.money-field div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+}
+
+.money-field input {
+    height: 100%;
+    width: 110px;
+    align-items: center;
+    border: none;
+    background-color: transparent;
 }
 
 /* .show {
