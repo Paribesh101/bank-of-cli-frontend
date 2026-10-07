@@ -21,21 +21,29 @@ interface JsonAccount {
     balance: number
 }
 
+const registered: Account[] = [];
 
 export function addAccount(account: Account): Account {
     // Pretends to add an account and return it with the id and balance filled
-    return {
-        id: 6,
-        username: account.username,
-        password: account.password,
-        firstName: account.firstName,
-        lastName: account.lastName,
-        balance: 0
-    }
-}
+    const all = getAccounts();
+    const nextId = all.reduce((max, a) => Math.max(max, a.id ?? 0), 0) + 1;
+
+    const created: Account = {   firstName: account.firstName,
+                                 lastName: account.lastName,
+                                 username: account.username,
+                                 password: account.password,
+                                 id: nextId, 
+                                 balance: 0 
+                            };
+
+    registered.push(created);
+    return created;
+
+}   
+
 
 export function getAccounts() {
-    return accounts.map(account => mapAccount(account as JsonAccount));
+    return [...accounts.map(a => mapAccount(a as JsonAccount)), ...registered];
 }
 
 export function getAccountById(id: number) {

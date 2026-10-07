@@ -1,6 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { Account } from '../contracts/account';
 import { addAccount, getAccounts } from '../mock/api';
 
+
+export type UserErrorCode =
+  | 'ACCOUNT_EXISTS'
+  | 'ACTIVE_DOES_NOT_EXIST';
+
+export class UserError extends Error {
+  constructor(public readonly code: UserErrorCode, message: string) {
+    super(message);
+    this.name = 'UserError';
+  }
+}
 /**
  * User service that provides basic mock authentication functionality.
  * This is intended for learning purposes and does not represent secure authentication.
@@ -11,6 +23,9 @@ import { addAccount, getAccounts } from '../mock/api';
 export class User {
 
   private readonly SESSION_KEY = 'accountId';
+  loggedIn = signal
+
+
 
   /**
    * Attempts to log in a user by comparing input credentials to the hardcoded ones.
@@ -28,28 +43,34 @@ export class User {
     const account = getAccounts().find(
       
       a => username === a.username && password === a.password
-    );
-    if(!account){
-      return false
-    }
-    sessionStorage.setItem(this.SESSION_KEY, String(account.id));
-    sessionStorage.setItem('authenticated', 'true');
-    return true;
+      );
+      if(!account){
+        return false
+      }
+      sessionStorage.setItem(this.SESSION_KEY, String(account.id));
+      sessionStorage.setItem('authenticated', 'true');
+
+      return true;
   }
 
 
-  register(username: string, password: string): boolean {
+  register(username: string, password: string, firstName: string, lastName: string): void {
     
     const exists = getAccounts().find(
       a => username === a.username
     );
+
     if(exists){
-      return false
+      throw new UserError('ACCOUNT_EXISTS', "the user provided already exists. ");
     }
-    return false
+    
+    const created = addAccount({username, password, firstName, lastName});
 
 
+  }
 
+  logout(): void{
+    sessionStorage.clear();
   }
 
   /**
