@@ -13,7 +13,7 @@ interface JsonTransaction {
 }
 
 interface JsonAccount {
-    _id: 1,
+    _id: number,
     username: string,
     password: string,
     first_name: string,

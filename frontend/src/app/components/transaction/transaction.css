@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color: lightgray;
+    letter-spacing: 1px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+input, select {
+    box-sizing: border-box;
+    padding: 8px;
+    height: 32px;
+    width: 100%;
+    border: solid 1px #262a47;
+    border-radius: 3px;
+    background-color: #0D1C42;
+    color: lightgray;
+    font-family: "Lucida Console", "Courier New", monospace;
+    align-items: center;
+}
+
+button {
+    box-sizing: border-box;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-weight: bold;
+}
+
+button:not(:disabled):hover, select:hover {
+    cursor: pointer;
+}
+
+.container {
+    padding: 16px;
+    border-radius: 5px;
+    border: solid 1px #393f6a;
+    background-color: #010736;
+}
+
+.field-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.stretch-field {
+    width: stretch;
+    min-width: 110px;
+}
+
+.normal-field {
+    width:120px
+}
+
+.money-field {
+    display: flex;
+    width: 120px;
+    align-items: center;
+    border: solid 1px #262a47;
+    border-radius: 3px;
+    background-color: #0D1C42;
+}
+.money-field div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+}
+
+.money-field input {
+    height: 100%;
+    width: 110px;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+}
+
+/* .show {
+    overflow: hidden;
+    animation: show-medium-field 1s;
+}
+
+@keyframes show-medium-field {
+  0% {
+    min-width: 0px;
+  }
+
+  100% {
+    min-width: 110px;
+  }
+} */
