@@ -48,4 +48,5 @@ nav > p {
 nav > a.active-link {
     color: rgb(42, 31, 110);
     font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.1); 
 }
