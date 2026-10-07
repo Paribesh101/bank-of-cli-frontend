@@ -5,7 +5,7 @@
     "password": "Maple1",
     "first_name": "John",
     "last_name": "Doe",
-    "balance": 50.00
+    "balance": 24310.47
   },
   {
     "_id": 2,
@@ -21,7 +21,7 @@
     "password": "Sun123",
     "first_name": "Alex",
     "last_name": "Brown",
-    "balance": 50.00
+    "balance": 10000.00
   },
   {
     "_id": 4,
@@ -29,7 +29,7 @@
     "password": "Pine7",
     "first_name": "Emily",
     "last_name": "Davis",
-    "balance": 50.00
+    "balance": 500.00
   },
   {
     "_id": 5,
@@ -37,6 +37,6 @@
     "password": "Star5",
     "first_name": "Michael",
     "last_name": "Wilson",
-    "balance": 50.00
+    "balance": 4000.00
   }
 ]
