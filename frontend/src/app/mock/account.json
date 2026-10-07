@@ -13,7 +13,7 @@
     "password": "Blue22",
     "first_name": "Jane",
     "last_name": "Smith",
-    "balance": 50.00
+    "balance": 1000.00
   },
   {
     "_id": 3,
@@ -29,7 +29,7 @@
     "password": "Pine7",
     "first_name": "Emily",
     "last_name": "Davis",
-    "balance": 500.00
+    "balance": 2160.00
   },
   {
     "_id": 5,

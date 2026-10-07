@@ -1,0 +1,30 @@
+<section class="container">
+    
+    <section>
+        <p class="moneyInOutText">
+            MONEY IN
+        </p>
+        <h4 class="moneyIn">
+            {{ moneyIn| currency}}
+        </h4>
+    </section>
+
+    <section>
+        <p class="moneyInOutText">
+            MONEY OUT 
+        </p>
+        <h4 class="moneyOut">
+            {{ moneyOut | currency}}
+        </h4>
+    </section>
+
+    <section>
+        <p class="moneyInOutText">
+            NET THIS MONTH
+        </p>
+        <h4 class="moneyIn">
+            +{{ netThisMonth | currency}}
+        </h4>
+    </section>
+    
+</section>
