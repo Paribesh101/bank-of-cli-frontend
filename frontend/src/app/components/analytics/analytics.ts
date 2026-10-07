@@ -14,18 +14,20 @@ export class Analytics {
   transactions: Transaction[] = [];
   moneyIn = 0;
   moneyOut = 0;
+  netThisMonth = 0;
 
   constructor() {
-    this.transactions = getTransactionsByAccountId(3);
+    this.transactions = getTransactionsByAccountId(4);
 
       for (const transaction of this.transactions) {
         if(transaction.type == 'deposit') {
           this.moneyIn += transaction.amount;
         }
 
-        if(transaction.type == 'withdrawal') {
+        if(transaction.type == 'withdraw' || transaction.type == 'transfer') {
           this.moneyOut += transaction.amount;
         }
+        this.netThisMonth = this.moneyIn - this.moneyOut;
 
     }
   }
