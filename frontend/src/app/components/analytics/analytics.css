@@ -1,0 +1,22 @@
+.container {
+    padding: 50px;
+    border-radius: 5px;
+    border: solid 1px #393f6a;
+    background-color: #010736;
+    display: flex;
+    justify-content: space-between;
+}
+
+.moneyIn {
+    font-size: 42px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.moneyOut {
+    font-size: 42px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    letter-spacing: 3px;
+    margin: 0;
+}
