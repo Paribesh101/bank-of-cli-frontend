@@ -1,0 +1,388 @@
+/*
+  =========================
+  MAIN HISTORY CARD
+  =========================
+*/
+
+.history-container {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 16px;
+
+  background-color: #010736;
+
+  border: 1px solid #393f6a;
+  border-radius: 5px;
+
+  color: #ffffff;
+}
+
+
+/*
+  =========================
+  TITLE + SEARCH
+  =========================
+*/
+
+.history-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 16px;
+}
+
+
+.history-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+.filter-field {
+  width: 280px;
+}
+
+
+/*
+  =========================
+  TABLE CONTAINER
+  =========================
+*/
+
+.table-container {
+  width: 100%;
+  box-sizing: border-box;
+
+  /*
+    We do NOT want the transaction history
+    to create a horizontal scrollbar.
+  */
+  overflow: hidden;
+
+  border: 1px solid #393f6a;
+  border-radius: 4px;
+}
+
+
+/*
+  =========================
+  TABLE
+  =========================
+*/
+
+.transaction-table {
+  width: 100%;
+
+  background-color: #010736;
+}
+
+
+/*
+  Header cells:
+  DATE / TYPE / AMOUNT
+*/
+
+.transaction-table th {
+  background-color: #080f3d;
+
+  color: #8490bd;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  border-bottom: 1px solid #393f6a;
+}
+
+
+/*
+  Transaction cells
+*/
+
+.transaction-table td {
+  background-color: #010736;
+
+  color: #e4e7f5;
+
+  font-size: 14px;
+
+  border-bottom: 1px solid #202851;
+}
+
+
+/*
+  Spacing inside table cells
+*/
+
+.transaction-table th,
+.transaction-table td {
+  padding: 16px 22px;
+}
+
+
+/*
+  Highlight a row when hovering over it.
+*/
+
+.transaction-table tr.mat-mdc-row:hover td {
+  background-color: #080f3d;
+}
+
+
+/*
+  Right-align money.
+*/
+
+.amount-cell {
+  text-align: right;
+}
+
+
+/*
+  No search results message
+*/
+
+.no-results {
+  padding: 30px !important;
+
+  text-align: center;
+
+  color: #8490bd !important;
+}
+
+
+/*
+  =========================
+  DATE VERSIONS
+  =========================
+
+  On normal/desktop screens:
+
+  Show:
+  2020-07-08 14:40:06-07
+
+  Hide:
+  2020-07-08
+*/
+
+.date-desktop {
+  display: inline;
+}
+
+
+.date-mobile {
+  display: none;
+}
+
+
+/*
+  =========================
+  PAGINATOR
+  =========================
+*/
+
+.history-paginator {
+  width: 100%;
+
+  background-color: #010736;
+
+  color: #c5cae0;
+
+  border-top: 1px solid #393f6a;
+}
+
+
+/*
+  =========================
+  MOBILE
+  =========================
+
+  These styles only run when
+  the screen is 700px wide or less.
+*/
+
+@media (max-width: 700px) {
+
+  /*
+    Slightly reduce the padding around
+    the entire history card.
+  */
+  .history-container {
+    padding: 12px;
+  }
+
+
+  /*
+    Put the title and search box
+    on separate lines.
+  */
+  .history-header {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+  }
+
+
+  /*
+    Search box fills the phone width.
+  */
+  .filter-field {
+    width: 100%;
+  }
+
+
+  /*
+    Make sure the table can NEVER become
+    wider than its container.
+  */
+  .table-container {
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+
+  /*
+    table-layout: fixed is very important.
+
+    Instead of allowing text to decide
+    how wide columns become, WE decide
+    their widths below.
+  */
+  .transaction-table {
+    width: 100%;
+
+    table-layout: fixed;
+  }
+
+
+  /*
+    =========================
+    COLUMN WIDTHS
+    =========================
+
+    30 + 37 + 33 = 100%
+  */
+
+  .transaction-table .mat-column-timestamp {
+    width: 30%;
+  }
+
+
+  .transaction-table .mat-column-type {
+    width: 37%;
+  }
+
+
+  .transaction-table .mat-column-amount {
+    width: 33%;
+
+    text-align: right;
+  }
+
+
+  /*
+    Reduce the large desktop padding.
+
+    This gives us much more room
+    for actual transaction data.
+  */
+  .transaction-table th,
+  .transaction-table td {
+    box-sizing: border-box;
+
+    padding: 14px 8px;
+
+    font-size: 13px;
+  }
+
+
+  /*
+    Prevent words like:
+
+    transfer
+    withdraw
+    deposit
+
+    from breaking onto multiple lines.
+  */
+  .type-cell {
+    white-space: nowrap;
+  }
+
+
+  /*
+    Keep money on one line as well.
+
+    We don't want:
+
+    $35
+    .00
+  */
+  .amount-cell {
+    white-space: nowrap;
+
+    text-align: right;
+  }
+
+
+  /*
+    =========================
+    MOBILE DATE
+    =========================
+
+    Hide:
+
+    2020-07-08 14:40:06-07
+
+    Show:
+
+    2020-07-08
+  */
+
+  .date-desktop {
+    display: none;
+  }
+
+
+  .date-mobile {
+    display: inline;
+
+    white-space: nowrap;
+  }
+
+
+  /*
+    Slightly smaller column headings.
+  */
+  .transaction-table th {
+    font-size: 11px;
+
+    letter-spacing: 0.5px;
+  }
+
+
+  /*
+    Give the paginator a reasonable
+    minimum amount of room.
+  */
+  .history-paginator {
+    width: 100%;
+
+    font-size: 12px;
+  }
+
+}
