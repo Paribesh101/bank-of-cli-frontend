@@ -1,0 +1,51 @@
+
+
+nav {
+    display: flex;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
+    background: #8585C0;
+
+    background: linear-gradient(90deg, rgba(133, 133, 192, 1) 0%, rgba(229, 229, 247, 1) 25%, rgba(229, 229, 247, 1) 100%);
+    padding-right: 20px;
+}
+
+nav > a {
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    padding: 4px;
+    margin: 8px;
+    border-radius: 3px;
+}
+
+nav > a:hover {
+    background-color: #e4e4e4;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+nav > a:nth-child(2) {
+    font-weight: bold;
+    letter-spacing: -0.2px;
+}
+
+nav > p {
+    color: rgb(158, 158, 158);
+    margin: 8px;  
+    padding: 4px;
+}
+
+.vertical-dotted-line {
+  border-left: 1px dotted #333;
+  height: auto;                
+}
+
+.fill-gap {
+    flex-grow: 1;
+}
+
+nav > a.active-link {
+    color: rgb(42, 31, 110);
+    font-weight: 600;
+}
