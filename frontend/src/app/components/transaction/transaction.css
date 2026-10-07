@@ -33,8 +33,11 @@ button {
     box-sizing: border-box;
     padding: 4px 8px;
     border-radius: 3px;
-    width: 120px;
     font-family: "Lucida Console", "Courier New", monospace;
+}
+
+button:not(:disabled):hover, select:hover {
+    cursor: pointer;
 }
 
 .container {
@@ -49,5 +52,5 @@ button {
 }
 
 .normal-field {
-    min-width: 100px;
+    min-width: 110px;
 }
