@@ -3,9 +3,7 @@
 nav {
     display: flex;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
-    background: #8585C0;
-
-    background: linear-gradient(90deg, rgba(133, 133, 192, 1) 0%, rgba(229, 229, 247, 1) 25%, rgba(229, 229, 247, 1) 100%);
+    background: #1d1d1d;
     padding-right: 20px;
 }
 
@@ -13,8 +11,9 @@ nav > a {
     font-size: 18px;
     font-weight: 500;
     text-decoration: none;
-    color: black;
+    color: white;
     padding: 4px;
+    padding-bottom: 2px;
     margin: 8px;
     border-radius: 3px;
 }
@@ -37,7 +36,7 @@ nav > p {
 }
 
 .vertical-dotted-line {
-  border-left: 1px dotted #333;
+  border-left: 1px dotted gray;
   height: auto;                
 }
 
@@ -46,7 +45,8 @@ nav > p {
 }
 
 nav > a.active-link {
-    color: rgb(42, 31, 110);
+    color: rgb(137, 137, 137);
     font-weight: 600;
-    background-color: rgba(0, 0, 0, 0.1); 
+    background-color: rgba(167, 167, 167, 0.1);
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
 }

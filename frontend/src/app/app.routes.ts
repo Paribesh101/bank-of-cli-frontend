@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { Dashboard } from './components/dashboard/dashboard';
 import { authenticationGuard } from './guards/authentication-guard';
+import { Home } from './components/home/home';
 
 /**
  * Defines the application's route configuration.
@@ -21,7 +22,7 @@ export const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "/login",
+    component: Home,
     pathMatch: "full" // Ensures full path match before redirecting to avoid an infinite loop
   }
 ];
