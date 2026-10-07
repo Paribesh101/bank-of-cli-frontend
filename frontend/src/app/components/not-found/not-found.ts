@@ -3,8 +3,8 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [RouterLink],
-  selector: 'home',
-  styleUrl: './home.css',
-  templateUrl: './home.html',
+  selector: 'app-not-found',
+  styleUrl: './not-found.css',
+  templateUrl: './not-found.html',
 })
-export class Home {}
+export class NotFound {}
