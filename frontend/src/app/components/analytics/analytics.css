@@ -3,7 +3,7 @@
     border-radius: 5px;
     border: solid 1px #393f6a;
     background-color: #010736;
-    display: flex;
+    display: flex; 
     /* justify-content: space-between; */
 }
 
@@ -44,3 +44,4 @@
     letter-spacing: 3px;
     margin: 0;
 }
+
