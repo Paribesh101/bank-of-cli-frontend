@@ -13,10 +13,11 @@ export class AccountOverview {
 
   private readonly bankService = inject(BankService)
   readonly balance = this.bankService.balance;
+  readonly lastUpdated = this.bankService.lastUpdated;
   constructor() {
     this.bankService.loadAccount(3).subscribe();
   }
 
   // balance: number = 20.00;
-  lastUpdated: string = 'Sep 29, 2026 - 14:32 PST';
+  //lastUpdated: string = 'Sep 29, 2026 - 14:32 PST';
 }

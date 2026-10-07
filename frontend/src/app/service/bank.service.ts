@@ -188,6 +188,11 @@ export class BankService {
   // History for the active account, newest first. Includes incoming transfers.
   readonly transactions = this._transactions.asReadonly();
   readonly balance = computed(() => this._account()?.balance ?? 0);
+  ////////////////////////////////////////////////////////////////
+  readonly lastUpdated = computed(() => {const transactions = this._transactions();
+    return transactions[0].timestamp;
+  });
+  ////////////////////////////////////////////////////////////////
   readonly hasTransactions = computed(() => this._transactions().length > 0);
   // True while any request made through this service is in flight (for spinners).
   readonly isLoading = computed(() => this._pending() > 0);

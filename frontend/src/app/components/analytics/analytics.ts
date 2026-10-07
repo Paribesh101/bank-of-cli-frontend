@@ -19,15 +19,15 @@ export class Analytics {
     this.transactions = getTransactionsByAccountId(3);
 
       for (const transaction of this.transactions) {
-    if(transaction.type == 'deposit') {
-      this.moneyIn += transaction.amount;
-    }
+        if(transaction.type == 'deposit') {
+          this.moneyIn += transaction.amount;
+        }
 
-    if(transaction.type == 'withdrawal') {
-      this.moneyOut += transaction.amount;
-    }
+        if(transaction.type == 'withdrawal') {
+          this.moneyOut += transaction.amount;
+        }
 
-  }
+    }
   }
 
 
