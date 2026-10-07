@@ -34,6 +34,7 @@ button {
     padding: 4px 8px;
     border-radius: 3px;
     font-family: "Lucida Console", "Courier New", monospace;
+    font-weight: bold;
 }
 
 button:not(:disabled):hover, select:hover {
@@ -47,10 +48,26 @@ button:not(:disabled):hover, select:hover {
     background-color: #010736;
 }
 
-.large-field {
+.stretch-field {
     width: stretch;
+    min-width: 110px;
 }
 
 .normal-field {
     min-width: 110px;
 }
+
+/* .show {
+    overflow: hidden;
+    animation: show-medium-field 1s;
+}
+
+@keyframes show-medium-field {
+  0% {
+    min-width: 0px;
+  }
+
+  100% {
+    min-width: 110px;
+  }
+} */

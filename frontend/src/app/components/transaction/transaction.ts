@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { BankService } from '../../service/bank.service';
 import { FormsModule } from '@angular/forms'; 
 
@@ -9,11 +9,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './transaction.html',
 })
 export class Transaction {
+  @Input()
+  accountId: number = 0;
+
   private readonly bankService = inject(BankService);
-  readonly accountId = 1;
 
   type: 'deposit' | 'withdraw' | 'transfer' = 'deposit';
-  username: string = '';
+  relatedAccountId: number | null = null;
   amount: number = 0.00;
   description: string = ''
 
@@ -23,32 +25,27 @@ export class Transaction {
   }
 
   onSubmit() {
+    console.log(this.accountId, this.type, this.relatedAccountId, this.amount, this.description);
+
     switch (this.type) {
       case 'deposit':
-        this.bankService.deposit(this.amount);
+        this.bankService.deposit(this.amount).subscribe();
         break;
     
       case 'withdraw':
-        this.bankService.withdraw(this.amount);
+        this.bankService.withdraw(this.amount).subscribe();
         break;
     
       case 'transfer':
-        this.bankService.transfer(100/*this.username*/, this.amount);
+        this.bankService.transfer(this.relatedAccountId == null ? -1 : this.relatedAccountId, this.amount).subscribe();
         break;
     
       default:
         break;
     }
 
-    this.username = '';
+    this.relatedAccountId = null;
     this.amount = 0.00;
     this.description = '';
   }
-
-
-
-  private deposit(amount: number) {
-    this.bankService.deposit(amount)
-  }
-
 }

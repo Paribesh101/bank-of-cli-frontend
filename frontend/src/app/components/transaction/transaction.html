@@ -9,14 +9,14 @@
             </select>
         </div>
         <div class="normal-field">
-            <input type="number" name="amount" [(ngModel)]="amount" step="0.01" min="0.00" required>
+            <input type="number" name="amount" [(ngModel)]="amount" inputmode="decimal" step="0.01" min="0.00" required>
         </div>
         @if (type === 'transfer') {
             <div class="normal-field">
-                <input type="text" name="username" [(ngModel)]="username" placeholder="Username" required>
+                <input type="number" name="username" [(ngModel)]="relatedAccountId" placeholder="Acct. Id" required>
             </div>
         }
-        <div class="large-field">
+        <div class="stretch-field">
             <input type="text" name="description" [(ngModel)]="description" placeholder="Description" class="description">
         </div>
         <button type="submit" [disabled]="transactionForm.invalid">Submit</button>
