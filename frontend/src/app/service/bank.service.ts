@@ -32,9 +32,9 @@ export class BankError extends Error {
 export interface BankDataSource {
   getAccount(id: number): Observable<AccountSummary>;
   getTransactions(accountId: number): Observable<Transaction[]>;
-  deposit(accountId: number, amount: number): Observable<TransactionResult>;
-  withdraw(accountId: number, amount: number): Observable<TransactionResult>;
-  transfer(fromId: number, toId: number, amount: number): Observable<TransactionResult>;
+  deposit(accountId: number, amount: number, description?: string): Observable<TransactionResult>;
+  withdraw(accountId: number, amount: number, description?: string): Observable<TransactionResult>;
+  transfer(fromId: number, toId: number, amount: number, description?: string): Observable<TransactionResult>;
 }
 
 export const BANK_DATA_SOURCE = new InjectionToken<BankDataSource>('BankDataSource', {
@@ -109,26 +109,26 @@ export class MockBankDataSource implements BankDataSource {
     });
   }
 
-  deposit(accountId: number, amount: number): Observable<TransactionResult> {
+  deposit(accountId: number, amount: number, description?: string): Observable<TransactionResult> {
     return this.respond(() => {
       assertValidAmount(amount);
       const account = this.findAccount(accountId);
       account.balance = roundMoney(account.balance + amount);
-      return { account: toSummary(account), transaction: this.record('deposit', amount, accountId) };
+      return { account: toSummary(account), transaction: this.record('deposit', amount, accountId, description) };
     });
   }
 
-  withdraw(accountId: number, amount: number): Observable<TransactionResult> {
+  withdraw(accountId: number, amount: number, description?: string): Observable<TransactionResult> {
     return this.respond(() => {
       assertValidAmount(amount);
       const account = this.findAccount(accountId);
       assertSufficientFunds(account.balance, amount);
       account.balance = roundMoney(account.balance - amount);
-      return { account: toSummary(account), transaction: this.record('withdraw', amount, accountId) };
+      return { account: toSummary(account), transaction: this.record('withdraw', amount, accountId, description) };
     });
   }
 
-  transfer(fromId: number, toId: number, amount: number): Observable<TransactionResult> {
+  transfer(fromId: number, toId: number, amount: number, description?: string): Observable<TransactionResult> {
     return this.respond(() => {
       assertValidAmount(amount);
       if (fromId === toId) {
@@ -139,7 +139,7 @@ export class MockBankDataSource implements BankDataSource {
       assertSufficientFunds(from.balance, amount);
       from.balance = roundMoney(from.balance - amount);
       to.balance = roundMoney(to.balance + amount);
-      return { account: toSummary(from), transaction: this.record('transfer', amount, fromId, toId) };
+      return { account: toSummary(from), transaction: this.record('transfer', amount, fromId, description,toId) };
     });
   }
 
@@ -160,8 +160,10 @@ export class MockBankDataSource implements BankDataSource {
     type: string,
     amount: number,
     accountId: number,
+    description?: string,
     relatedAccountId?: number,
   ): Transaction {
+    const text = description?.trim();
     const transaction: Transaction = {
       id: this.transactions.reduce((max, t) => Math.max(max, t.id), 0) + 1,
       accountId,
@@ -169,6 +171,7 @@ export class MockBankDataSource implements BankDataSource {
       amount,
       timestamp: new Date().toISOString(),
       ...(relatedAccountId !== undefined && { relatedAccountId }),
+      ...(text && { description: text }),
     };
     this.transactions.push(transaction);
     return { ...transaction };
@@ -191,7 +194,7 @@ export class BankService {
   ////////////////////////////////////////////////////////////////
   readonly firstName = computed(() => this._account()?.firstName ?? '');
   readonly lastUpdated = computed(() => {const transactions = this._transactions();
-    return transactions[0].timestamp;
+    return transactions[0]?.timestamp ?? '';
   });
   ////////////////////////////////////////////////////////////////
   readonly hasTransactions = computed(() => this._transactions().length > 0);
@@ -222,14 +225,14 @@ export class BankService {
     );
   }
 
-  deposit(amount: number): Observable<TransactionResult> {
+  deposit(amount: number, description?: string): Observable<TransactionResult> {
     return this.runTransaction(() => {
       assertValidAmount(amount);
       return this.api.deposit(this.requireAccountId(), amount);
     });
   }
 
-  withdraw(amount: number): Observable<TransactionResult> {
+  withdraw(amount: number, description?: string): Observable<TransactionResult> {
     return this.runTransaction(() => {
       assertValidAmount(amount);
       assertSufficientFunds(this.balance(), amount);
@@ -237,7 +240,7 @@ export class BankService {
     });
   }
 
-  transfer(toAccountId: number, amount: number): Observable<TransactionResult> {
+  transfer(toAccountId: number, amount: number, description?: string): Observable<TransactionResult> {
     return this.runTransaction(() => {
       assertValidAmount(amount);
       if (!Number.isInteger(toAccountId) || toAccountId <= 0) {

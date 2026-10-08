@@ -7,8 +7,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { Transaction } from '../../../contracts/transaction';
-import { BankService } from '../../../service/bank.service';
+import { Transaction } from '../../contracts/transaction';
+import { BankService } from '../../service/bank.service';
 
 @Component({
   selector: 'app-history',
