@@ -20,6 +20,8 @@ export class Transaction {
   amount: number = 0.00;
   description: string = ''
 
+  
+
   // ngOnInit() {
   //   console.log("init");
   //   this.bankService.loadAccount(this.accountId).subscribe();
@@ -30,7 +32,7 @@ export class Transaction {
 
     switch (this.type) {
       case 'deposit':
-        this.bankService.deposit(this.amount).subscribe({
+        this.bankService.deposit(this.amount, this.description).subscribe({
           next: value => {
             this.toastService.success("Deposit successful!"),
             this.resetForm();
@@ -40,7 +42,7 @@ export class Transaction {
         break;
     
       case 'withdraw':
-        this.bankService.withdraw(this.amount).subscribe({
+        this.bankService.withdraw(this.amount, this.description).subscribe({
           next: value => {
             this.toastService.success("Withdraw successful!")
             this.resetForm();
@@ -50,7 +52,7 @@ export class Transaction {
         break;
     
       case 'transfer':
-        this.bankService.transfer(this.relatedAccountId == null ? -1 : this.relatedAccountId, this.amount).subscribe({
+        this.bankService.transfer(this.relatedAccountId == null ? -1 : this.relatedAccountId, this.amount, this.description).subscribe({
           next: value => {
             this.toastService.success("Transfer successful!");
             this.resetForm();

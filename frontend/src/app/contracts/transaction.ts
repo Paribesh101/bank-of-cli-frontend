@@ -8,6 +8,7 @@ export interface Transaction {
   timestamp: string;
   type: string;
   amount: number;
+  description?: string;
   accountId: number;
   relatedAccountId?: number;
 }
