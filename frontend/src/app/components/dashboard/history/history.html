@@ -31,6 +31,7 @@
       class="transaction-table"
     >
 
+    
       <ng-container matColumnDef="timestamp">
 
         <th
@@ -45,22 +46,13 @@
           mat-cell
           *matCellDef="let transaction"
         >
-
-  
-          <span class="date-desktop">
-            {{ transaction.timestamp }}
-          </span>
-
-          <span class="date-mobile">
-            {{ transaction.timestamp.substring(0, 10) }}
-          </span>
-
+          {{ formatDate(transaction.timestamp) }}
         </td>
 
       </ng-container>
 
 
-      <!-- TYPE -->
+ 
       <ng-container matColumnDef="type">
 
         <th
@@ -82,7 +74,7 @@
       </ng-container>
 
 
-      <!-- AMOUNT -->
+      
       <ng-container matColumnDef="amount">
 
         <th
@@ -97,6 +89,12 @@
           mat-cell
           *matCellDef="let transaction"
           class="amount-cell"
+          [class.amount-negative]="
+            getAmountClass(transaction) === 'amount-negative'
+          "
+          [class.amount-positive]="
+            getAmountClass(transaction) === 'amount-positive'
+          "
         >
           {{ transaction.amount | currency }}
         </td>
@@ -104,39 +102,37 @@
       </ng-container>
 
 
-      <!-- Header row -->
+    
       <tr
         mat-header-row
         *matHeaderRowDef="displayedColumns"
       ></tr>
 
 
-      <!-- Transaction rows -->
+   
       <tr
         mat-row
         *matRowDef="let row; columns: displayedColumns"
       ></tr>
 
 
-
+     
       <tr
         class="mat-row"
         *matNoDataRow
       >
-
         <td
           class="mat-cell no-results"
           [attr.colspan]="displayedColumns.length"
         >
           No transactions matching "{{ input.value }}"
         </td>
-
       </tr>
 
     </table>
 
 
-    
+   
     <mat-paginator
       class="history-paginator"
       [pageSize]="5"

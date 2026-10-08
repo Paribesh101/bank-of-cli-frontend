@@ -1,13 +1,32 @@
+.welcome-section-message {
+    font-size: 12px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    letter-spacing: 5px;
+    color: #A8A492;
+}
+
+
+.welcome-section-name {
+    font-size: 42px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    letter-spacing: 5px;
+    /* letter-spacing: 1px; */
+    color: #A8A492;
+    margin-bottom: 15px;
+    margin-top: 15px
+}
+
 .balance-section {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .balance-label {
     font-size: 12px;
     font-family: "Lucida Console", "Courier New", monospace;
     letter-spacing: 5px;
-    color: FCF1D0;
+    color: #A8A492;
+    margin-top: 50px;
     margin-bottom: 20px;
 }
 
@@ -22,6 +41,7 @@
     font-size: 12px;
     font-family: "Lucida Console", "Courier New", monospace;
     letter-spacing: 5px;
-    color: #FCF1D0;
+    color: #A8A492;
     margin-top: 15px;
 }
+

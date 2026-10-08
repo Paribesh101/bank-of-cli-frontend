@@ -18,7 +18,6 @@
   color: #ffffff;
 }
 
-
 /*
   =========================
   TITLE + SEARCH
@@ -36,7 +35,6 @@
   margin-bottom: 16px;
 }
 
-
 .history-header h2 {
   margin: 0;
 
@@ -46,11 +44,9 @@
   font-weight: 600;
 }
 
-
 .filter-field {
   width: 280px;
 }
-
 
 /*
   =========================
@@ -72,7 +68,6 @@
   border-radius: 4px;
 }
 
-
 /*
   =========================
   TABLE
@@ -84,7 +79,6 @@
 
   background-color: #010736;
 }
-
 
 /*
   Header cells:
@@ -105,7 +99,6 @@
   border-bottom: 1px solid #393f6a;
 }
 
-
 /*
   Transaction cells
 */
@@ -120,7 +113,6 @@
   border-bottom: 1px solid #202851;
 }
 
-
 /*
   Spacing inside table cells
 */
@@ -130,7 +122,6 @@
   padding: 16px 22px;
 }
 
-
 /*
   Highlight a row when hovering over it.
 */
@@ -139,7 +130,6 @@
   background-color: #080f3d;
 }
 
-
 /*
   Right-align money.
 */
@@ -147,7 +137,6 @@
 .amount-cell {
   text-align: right;
 }
-
 
 /*
   No search results message
@@ -160,7 +149,6 @@
 
   color: #8490bd !important;
 }
-
 
 /*
   =========================
@@ -180,11 +168,9 @@
   display: inline;
 }
 
-
 .date-mobile {
   display: none;
 }
-
 
 /*
   =========================
@@ -202,7 +188,6 @@
   border-top: 1px solid #393f6a;
 }
 
-
 /*
   =========================
   MOBILE
@@ -213,7 +198,6 @@
 */
 
 @media (max-width: 700px) {
-
   /*
     Slightly reduce the padding around
     the entire history card.
@@ -221,7 +205,6 @@
   .history-container {
     padding: 12px;
   }
-
 
   /*
     Put the title and search box
@@ -235,14 +218,12 @@
     gap: 12px;
   }
 
-
   /*
     Search box fills the phone width.
   */
   .filter-field {
     width: 100%;
   }
-
 
   /*
     Make sure the table can NEVER become
@@ -253,7 +234,6 @@
 
     overflow: hidden;
   }
-
 
   /*
     table-layout: fixed is very important.
@@ -268,7 +248,6 @@
     table-layout: fixed;
   }
 
-
   /*
     =========================
     COLUMN WIDTHS
@@ -281,18 +260,15 @@
     width: 30%;
   }
 
-
   .transaction-table .mat-column-type {
     width: 37%;
   }
-
 
   .transaction-table .mat-column-amount {
     width: 33%;
 
     text-align: right;
   }
-
 
   /*
     Reduce the large desktop padding.
@@ -309,7 +285,6 @@
     font-size: 13px;
   }
 
-
   /*
     Prevent words like:
 
@@ -322,7 +297,6 @@
   .type-cell {
     white-space: nowrap;
   }
-
 
   /*
     Keep money on one line as well.
@@ -337,7 +311,6 @@
 
     text-align: right;
   }
-
 
   /*
     =========================
@@ -357,13 +330,11 @@
     display: none;
   }
 
-
   .date-mobile {
     display: inline;
 
     white-space: nowrap;
   }
-
 
   /*
     Slightly smaller column headings.
@@ -374,7 +345,6 @@
     letter-spacing: 0.5px;
   }
 
-
   /*
     Give the paginator a reasonable
     minimum amount of room.
@@ -384,5 +354,30 @@
 
     font-size: 12px;
   }
+}
+/*
+ * Money that came INTO the logged-in account.
+ */
+.amount-positive {
+  color: #4caf50 !important;
+  font-weight: 600;
+}
 
+/*
+ * Money that LEFT the logged-in account.
+ */
+.amount-negative {
+  color: #ef5350 !important;
+  font-weight: 600;
+}
+/* Money added to the account */
+.amount-positive {
+  color: #4caf50 !important;
+  font-weight: 600;
+}
+
+/* Money removed from the account */
+.amount-negative {
+  color: #ef5350 !important;
+  font-weight: 600;
 }
