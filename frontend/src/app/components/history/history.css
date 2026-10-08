@@ -702,3 +702,10 @@
     margin-left: 4px;
   }
 }
+
+:host ::ng-deep
+.transaction-table
+.mat-sort-header-arrow {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
