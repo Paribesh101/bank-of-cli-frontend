@@ -21,9 +21,8 @@
     Match the font used in the
     Account Overview / Balance.
   */
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 }
-
 
 /*
   =========================
@@ -47,12 +46,11 @@
 
   color: #ffffff;
 
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 
   font-size: 20px;
   font-weight: 600;
 }
-
 
 /*
   =========================
@@ -66,7 +64,7 @@
 .filter-field {
   width: 280px;
 
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 
   /*
     Match Transaction input border.
@@ -96,7 +94,7 @@
   as the Transaction component inputs.
 */
 :host ::ng-deep .filter-field .mat-mdc-text-field-wrapper {
-  background-color: #0D1C42;
+  background-color: #0d1c42;
   border-radius: 3px;
 }
 
@@ -104,11 +102,20 @@
   Make the text typed into the search box
   use the same font as the rest of the app.
 */
-:host ::ng-deep .filter-field input {
-  font-family: "Lucida Console", "Courier New", monospace;
+/*
+  Text the user types into the search box.
+  Angular Material applies its own input color,
+  so we target the Material input directly.
+*/
+:host ::ng-deep .filter-field .mat-mdc-input-element {
+  font-family: 'Lucida Console', 'Courier New', monospace;
+
+  color: #ffffff !important;
+  caret-color: #ffffff !important;
+
+  /* Helps make sure Chrome displays the typed text as white. */
+  -webkit-text-fill-color: #ffffff !important;
 }
-
-
 /*
   =========================
   TABLE CONTAINER
@@ -129,7 +136,6 @@
   border-radius: 4px;
 }
 
-
 /*
   =========================
   TABLE
@@ -142,7 +148,6 @@
   background-color: #010736;
 }
 
-
 /*
   Header cells:
   DATE / TYPE / AMOUNT
@@ -153,7 +158,7 @@
 
   color: #8490bd;
 
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 
   font-size: 12px;
   font-weight: 600;
@@ -164,7 +169,6 @@
   border-bottom: 1px solid #393f6a;
 }
 
-
 /*
   Transaction cells
 */
@@ -174,13 +178,12 @@
 
   color: #e4e7f5;
 
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 
   font-size: 14px;
 
   border-bottom: 1px solid #202851;
 }
-
 
 /*
   Spacing inside table cells.
@@ -191,7 +194,6 @@
   padding: 16px 22px;
 }
 
-
 /*
   Highlight a row when hovering over it.
 */
@@ -199,7 +201,6 @@
 .transaction-table tr.mat-mdc-row:hover td {
   background-color: #080f3d;
 }
-
 
 /*
   =========================
@@ -223,7 +224,6 @@
   text-transform: capitalize;
 }
 
-
 /*
   =========================
   AMOUNT
@@ -233,7 +233,6 @@
 .amount-cell {
   text-align: right;
 }
-
 
 /*
   Money added to the account:
@@ -245,7 +244,6 @@
   font-weight: 600;
 }
 
-
 /*
   Money removed from the account:
   withdrawals and outgoing transfers.
@@ -255,7 +253,6 @@
   color: #ef5350 !important;
   font-weight: 600;
 }
-
 
 /*
   =========================
@@ -271,7 +268,6 @@
   color: #8490bd !important;
 }
 
-
 /*
   =========================
   PAGINATOR
@@ -285,11 +281,10 @@
 
   color: #c5cae0;
 
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 
   border-top: 1px solid #393f6a;
 }
-
 
 /*
   Make Angular Material's paginator text
@@ -297,9 +292,8 @@
 */
 
 :host ::ng-deep .history-paginator * {
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 }
-
 
 /*
   =========================
@@ -311,7 +305,6 @@
 */
 
 @media (max-width: 700px) {
-
   /*
     Slightly reduce the padding around
     the entire history card.
@@ -319,7 +312,6 @@
   .history-container {
     padding: 12px;
   }
-
 
   /*
     Put the title and search box
@@ -333,14 +325,12 @@
     gap: 12px;
   }
 
-
   /*
     Search box fills the phone width.
   */
   .filter-field {
     width: 100%;
   }
-
 
   /*
     Make sure the table cannot become
@@ -352,7 +342,6 @@
     overflow: hidden;
   }
 
-
   /*
     table-layout: fixed lets us control
     how much space each column receives.
@@ -362,7 +351,6 @@
 
     table-layout: fixed;
   }
-
 
   /*
     =========================
@@ -386,7 +374,6 @@
     text-align: right;
   }
 
-
   /*
     Reduce desktop padding so there is
     more room for the transaction data.
@@ -400,7 +387,6 @@
     font-size: 13px;
   }
 
-
   /*
     Prevent Deposit / Withdraw / Transfer
     from breaking onto multiple lines.
@@ -408,7 +394,6 @@
   .type-cell {
     white-space: nowrap;
   }
-
 
   /*
     Keep money on one line.
@@ -424,7 +409,6 @@
     text-align: right;
   }
 
-
   /*
     Slightly smaller column headings
     for mobile screens.
@@ -434,7 +418,6 @@
 
     letter-spacing: 0.5px;
   }
-
 
   /*
     Keep the paginator fitting comfortably
