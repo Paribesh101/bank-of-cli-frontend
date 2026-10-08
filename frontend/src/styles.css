@@ -15,3 +15,9 @@
   .toast-error .mat-mdc-snack-bar-action {
     color: #8ab4f8;
   }
+
+  @media (max-width: 768px) {
+    .dashboard {
+      padding: 40px 5%;
+    }
+  }
