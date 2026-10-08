@@ -1,3 +1,7 @@
+* {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
 /*
   =========================
   MAIN HISTORY CARD
@@ -32,7 +36,7 @@
 
 .history-header {
   display: flex;
-
+  height: 60px;
   justify-content: space-between;
   align-items: center;
 
@@ -48,8 +52,13 @@
 
   font-family: 'Lucida Console', 'Courier New', monospace;
 
-  font-size: 20px;
   font-weight: 600;
+
+  font-size: 12px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: normal;
+  color: #757D6F; 
+  letter-spacing: 5px;
 }
 
 /*
@@ -84,6 +93,20 @@
   --mdc-outlined-text-field-input-text-color: lightgray;
   --mdc-outlined-text-field-label-text-color: lightgray;
   --mdc-outlined-text-field-focus-label-text-color: lightgray;
+}
+
+.filter-field input {
+  box-sizing: border-box;
+  padding: 8px;
+  height: 10px;
+  min-height: 10px;
+  width: stretch;
+  border: solid 1px #262a47;
+  border-radius: 3px;
+  background-color: #0D1C42;
+  color: lightgray;
+  font-family: "Lucida Console", "Courier New", monospace;
+  align-items: center;
 }
 
 /*
@@ -240,8 +263,7 @@
 */
 
 .amount-positive {
-  color: #4caf50 !important;
-  font-weight: 600;
+  color: #597928 !important;
 }
 
 /*
@@ -250,8 +272,7 @@
 */
 
 .amount-negative {
-  color: #ef5350 !important;
-  font-weight: 600;
+  color: #B93636 !important;
 }
 
 /*

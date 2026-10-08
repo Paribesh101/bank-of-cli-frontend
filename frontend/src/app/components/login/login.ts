@@ -31,7 +31,7 @@ export class Login {
 
   private router = inject(Router);
   private userService = inject(User);
-  private mode = signal("register");
+  private mode = signal("login");
 
   
 
