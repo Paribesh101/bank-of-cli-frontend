@@ -228,7 +228,8 @@ export class BankService {
   deposit(amount: number, description?: string): Observable<TransactionResult> {
     return this.runTransaction(() => {
       assertValidAmount(amount);
-      return this.api.deposit(this.requireAccountId(), amount,description);
+      return this.api.deposit(this.requireAccountId(), amount,description); 
+      //aaa
     });
   }
 
