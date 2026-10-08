@@ -46,8 +46,17 @@ export class Login {
       await this.router.navigate(['dashboard']);
     } else {
       this.errorMessage = 'login failed, please try again';
+      
     }
   }
+
+  setMode(newMode: 'login' | 'register') {
+  this.mode.set(newMode);
+  this.errorMessage = '';
+  this.successMessage = '';
+  this.passwordInput = '';
+  this.confirmPasswordInput = '';
+}
 
   attemptRegister() {
     this.errorMessage = '';

@@ -1,8 +1,10 @@
 :host {
   display: block;
   min-height: 100vh;
+  padding: 4rem 0 2rem;  
   
   background: linear-gradient(to top, #010736, #22396F);
+
 }
 
 .login-form {
@@ -15,7 +17,6 @@
   padding: 1.5rem;
   box-sizing: border-box;
   position: relative;
-  top: 4rem;
 
   background-color: #fff;
   border-radius: 3px;

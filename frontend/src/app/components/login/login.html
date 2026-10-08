@@ -5,8 +5,8 @@
 
 <form (ngSubmit)="submit()" class="login-form">
    <div class="login-selector">
-    <button type="button" (click)="mode.set('login')" [class.active]="mode() === 'login'">Login</button>
-    <button type="button" (click)="mode.set('register' )" [class.active]="mode() === 'register'">Register</button>
+    <button type="button" (click)="setMode('login')" [class.active]="mode() === 'login'">Login</button>
+    <button type="button" (click)="setMode('register' )" [class.active]="mode() === 'register'">Register</button>
 
   </div>
     @if(mode()=='register'){
