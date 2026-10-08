@@ -6,7 +6,6 @@
 h1 {
     margin-bottom: 8px;
     font-size: 12px;
-    font-family: "Lucida Console", "Courier New", monospace;
     font-weight: normal;
     color: #757D6F;
     letter-spacing: 5px;
@@ -28,7 +27,6 @@ input, select {
     border-radius: 3px;
     background-color: #0D1C42;
     color: lightgray;
-    font-family: "Lucida Console", "Courier New", monospace;
     align-items: center;
 }
 
@@ -38,7 +36,6 @@ button {
     border: none;
     padding: 8px 16px;
     border-radius: 5px;
-    font-family: "Lucida Console", "Courier New", monospace;
     font-weight: bold;
 }
 button:hover {
