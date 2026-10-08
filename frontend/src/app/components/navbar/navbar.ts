@@ -32,4 +32,9 @@ export class Navbar {
     this.userName.set(getAccountById(accountId).username);
   }
 
+  private logout() {
+    this.userService.logout();
+    this.router.navigate(["/"])
+  }
+
 }
