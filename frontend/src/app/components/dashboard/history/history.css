@@ -1,0 +1,431 @@
+/*
+  =========================
+  MAIN HISTORY CARD
+  =========================
+*/
+
+.history-container {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 16px;
+
+  background-color: #010736;
+
+  border: 1px solid #393f6a;
+  border-radius: 5px;
+
+  color: #ffffff;
+
+  /*
+    Match the font used in the
+    Account Overview / Balance.
+  */
+  font-family: 'Lucida Console', 'Courier New', monospace;
+}
+
+/*
+  =========================
+  TITLE + SEARCH
+  =========================
+*/
+
+.history-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 16px;
+}
+
+.history-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: 'Lucida Console', 'Courier New', monospace;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/*
+  =========================
+  SEARCH FIELD
+  =========================
+
+  These colors match the inputs
+  in the Transaction component.
+*/
+
+.filter-field {
+  width: 280px;
+
+  font-family: 'Lucida Console', 'Courier New', monospace;
+
+  /*
+    Match Transaction input border.
+  */
+  --mdc-outlined-text-field-outline-color: #262a47;
+  --mdc-outlined-text-field-hover-outline-color: #262a47;
+  --mdc-outlined-text-field-focus-outline-color: #262a47;
+
+  /*
+    Match Transaction input border radius.
+  */
+  --mdc-outlined-text-field-container-shape: 3px;
+
+  /*
+    Match Transaction input text colors.
+  */
+  --mdc-outlined-text-field-input-text-color: lightgray;
+  --mdc-outlined-text-field-label-text-color: lightgray;
+  --mdc-outlined-text-field-focus-label-text-color: lightgray;
+}
+
+/*
+  Angular Material creates an inner wrapper
+  around the input.
+
+  This gives that wrapper the same background
+  as the Transaction component inputs.
+*/
+:host ::ng-deep .filter-field .mat-mdc-text-field-wrapper {
+  background-color: #0d1c42;
+  border-radius: 3px;
+}
+
+/*
+  Make the text typed into the search box
+  use the same font as the rest of the app.
+*/
+/*
+  Text the user types into the search box.
+  Angular Material applies its own input color,
+  so we target the Material input directly.
+*/
+:host ::ng-deep .filter-field .mat-mdc-input-element {
+  font-family: 'Lucida Console', 'Courier New', monospace;
+
+  color: #ffffff !important;
+  caret-color: #ffffff !important;
+
+  /* Helps make sure Chrome displays the typed text as white. */
+  -webkit-text-fill-color: #ffffff !important;
+}
+/*
+  =========================
+  TABLE CONTAINER
+  =========================
+*/
+
+.table-container {
+  width: 100%;
+  box-sizing: border-box;
+
+  /*
+    We do NOT want the transaction history
+    to create a horizontal scrollbar.
+  */
+  overflow: hidden;
+
+  border: 1px solid #393f6a;
+  border-radius: 4px;
+}
+
+/*
+  =========================
+  TABLE
+  =========================
+*/
+
+.transaction-table {
+  width: 100%;
+
+  background-color: #010736;
+}
+
+/*
+  Header cells:
+  DATE / TYPE / AMOUNT
+*/
+
+.transaction-table th {
+  background-color: #080f3d;
+
+  color: #8490bd;
+
+  font-family: 'Lucida Console', 'Courier New', monospace;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  border-bottom: 1px solid #393f6a;
+}
+
+/*
+  Transaction cells
+*/
+
+.transaction-table td {
+  background-color: #010736;
+
+  color: #e4e7f5;
+
+  font-family: 'Lucida Console', 'Courier New', monospace;
+
+  font-size: 14px;
+
+  border-bottom: 1px solid #202851;
+}
+
+/*
+  Spacing inside table cells.
+*/
+
+.transaction-table th,
+.transaction-table td {
+  padding: 16px 22px;
+}
+
+/*
+  Highlight a row when hovering over it.
+*/
+
+.transaction-table tr.mat-mdc-row:hover td {
+  background-color: #080f3d;
+}
+
+/*
+  =========================
+  TRANSACTION TYPE
+  =========================
+
+  The JSON stores values like:
+
+  deposit
+  withdraw
+  transfer
+
+  This only changes how they LOOK:
+
+  Deposit
+  Withdraw
+  Transfer
+*/
+
+.type-cell {
+  text-transform: capitalize;
+}
+
+/*
+  =========================
+  AMOUNT
+  =========================
+*/
+
+.amount-cell {
+  text-align: right;
+}
+
+/*
+  Money added to the account:
+  deposits and incoming transfers.
+*/
+
+.amount-positive {
+  color: #4caf50 !important;
+  font-weight: 600;
+}
+
+/*
+  Money removed from the account:
+  withdrawals and outgoing transfers.
+*/
+
+.amount-negative {
+  color: #ef5350 !important;
+  font-weight: 600;
+}
+
+/*
+  =========================
+  NO SEARCH RESULTS
+  =========================
+*/
+
+.no-results {
+  padding: 30px !important;
+
+  text-align: center;
+
+  color: #8490bd !important;
+}
+
+/*
+  =========================
+  PAGINATOR
+  =========================
+*/
+
+.history-paginator {
+  width: 100%;
+
+  background-color: #010736;
+
+  color: #c5cae0;
+
+  font-family: 'Lucida Console', 'Courier New', monospace;
+
+  border-top: 1px solid #393f6a;
+}
+
+/*
+  Make Angular Material's paginator text
+  use the same font too.
+*/
+
+:host ::ng-deep .history-paginator * {
+  font-family: 'Lucida Console', 'Courier New', monospace;
+}
+
+/*
+  =========================
+  MOBILE
+  =========================
+
+  These styles only run when
+  the screen is 700px wide or less.
+*/
+
+@media (max-width: 700px) {
+  /*
+    Slightly reduce the padding around
+    the entire history card.
+  */
+  .history-container {
+    padding: 12px;
+  }
+
+  /*
+    Put the title and search box
+    on separate lines.
+  */
+  .history-header {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+  }
+
+  /*
+    Search box fills the phone width.
+  */
+  .filter-field {
+    width: 100%;
+  }
+
+  /*
+    Make sure the table cannot become
+    wider than its container.
+  */
+  .table-container {
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+  /*
+    table-layout: fixed lets us control
+    how much space each column receives.
+  */
+  .transaction-table {
+    width: 100%;
+
+    table-layout: fixed;
+  }
+
+  /*
+    =========================
+    COLUMN WIDTHS
+    =========================
+
+    30 + 37 + 33 = 100%
+  */
+
+  .transaction-table .mat-column-timestamp {
+    width: 30%;
+  }
+
+  .transaction-table .mat-column-type {
+    width: 37%;
+  }
+
+  .transaction-table .mat-column-amount {
+    width: 33%;
+
+    text-align: right;
+  }
+
+  /*
+    Reduce desktop padding so there is
+    more room for the transaction data.
+  */
+  .transaction-table th,
+  .transaction-table td {
+    box-sizing: border-box;
+
+    padding: 14px 8px;
+
+    font-size: 13px;
+  }
+
+  /*
+    Prevent Deposit / Withdraw / Transfer
+    from breaking onto multiple lines.
+  */
+  .type-cell {
+    white-space: nowrap;
+  }
+
+  /*
+    Keep money on one line.
+
+    We don't want:
+
+    $350
+    .00
+  */
+  .amount-cell {
+    white-space: nowrap;
+
+    text-align: right;
+  }
+
+  /*
+    Slightly smaller column headings
+    for mobile screens.
+  */
+  .transaction-table th {
+    font-size: 11px;
+
+    letter-spacing: 0.5px;
+  }
+
+  /*
+    Keep the paginator fitting comfortably
+    on smaller screens.
+  */
+  .history-paginator {
+    width: 100%;
+
+    font-size: 12px;
+  }
+}

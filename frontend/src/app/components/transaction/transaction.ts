@@ -20,6 +20,8 @@ export class Transaction {
   amount: number = 0.00;
   description: string = ''
 
+  
+
   // ngOnInit() {
   //   console.log("init");
   //   this.bankService.loadAccount(this.accountId).subscribe();
