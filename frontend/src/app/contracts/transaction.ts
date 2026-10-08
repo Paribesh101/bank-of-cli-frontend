@@ -8,7 +8,7 @@ export interface Transaction {
   timestamp: string;
   type: string;
   amount: number;
-  description: string;
+  description?: string;
   accountId: number;
   relatedAccountId?: number;
 }
