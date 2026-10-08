@@ -45,7 +45,7 @@
 }
 
 .netMonth {
-    font-size: 25px;
+    font-size: clamp(1rem, 1.5vw, 2rem);
     font-family: "Lucida Console", "Courier New", monospace;
     /* color: #B93636; */
     letter-spacing: 3px;
@@ -79,5 +79,18 @@
     color: #597928;
 }
 
+@media (max-width: 768px) {
+    .moneyIn,
+    .moneyOut,
+    .netMonth {
+        font-size: clamp(0.9rem, 4vw, 1.3rem);
+        letter-spacing: 0;
+        overflow-wrap: break-word;
+    }
 
+    .container section {
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
 
