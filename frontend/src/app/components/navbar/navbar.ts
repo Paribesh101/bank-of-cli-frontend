@@ -28,8 +28,13 @@ export class Navbar {
   }
 
   private refresh() {
-    const accountId = Number(sessionStorage.getItem("accountId"));
-    this.userName.set(getAccountById(accountId).username);
+    const stored = sessionStorage.getItem("accountId");
+    if (!stored) {
+      this.userName.set('');
+      return;
+    }
+    const account = getAccountById(Number(stored));
+    this.userName.set(account?.username ?? '');
   }
 
   private logout() {

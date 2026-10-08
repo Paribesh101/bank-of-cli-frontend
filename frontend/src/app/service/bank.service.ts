@@ -171,7 +171,7 @@ export class MockBankDataSource implements BankDataSource {
       amount,
       timestamp: new Date().toISOString(),
       ...(relatedAccountId !== undefined && { relatedAccountId }),
-      ...(text && { description: text }),
+      ...(text && { description: text ?? '', }),
     };
     this.transactions.push(transaction);
     return { ...transaction };
