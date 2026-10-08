@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Transaction } from '../../contracts/transaction';
 import { getTransactionsByAccountId } from '../../mock/api';

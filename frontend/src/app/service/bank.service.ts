@@ -189,6 +189,7 @@ export class BankService {
   readonly transactions = this._transactions.asReadonly();
   readonly balance = computed(() => this._account()?.balance ?? 0);
   ////////////////////////////////////////////////////////////////
+  readonly firstName = computed(() => this._account()?.firstName ?? '');
   readonly lastUpdated = computed(() => {const transactions = this._transactions();
     return transactions[0].timestamp;
   });
