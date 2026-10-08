@@ -8,6 +8,7 @@ interface JsonTransaction {
   timestamp: string;
   type: string;
   amount: number;
+  description: string;
   account_id: number;
   related_account_id?: number;
 }
@@ -97,6 +98,7 @@ function mapTransaction(transaction: JsonTransaction): Transaction {
         timestamp: transaction.timestamp,
         type: transaction.type,
         amount: transaction.amount,
+        description: transaction.description,
         accountId: transaction.account_id,
         relatedAccountId: transaction.related_account_id
     }

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AccountOverview } from '../account-overview/account-overview';
 import { Analytics } from '../analytics/analytics';
 import { Transaction } from '../transaction/transaction';
-import { History } from './history/history';
+import { History } from '../history/history';
 import { BankService } from '../../service/bank.service';
 
 @Component({

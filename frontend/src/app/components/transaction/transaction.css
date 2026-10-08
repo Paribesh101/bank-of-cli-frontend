@@ -9,6 +9,7 @@ h1 {
     font-family: "Lucida Console", "Courier New", monospace;
     font-weight: normal;
     color: #757D6F;
+    letter-spacing: 5px;
 }
 
 form {
