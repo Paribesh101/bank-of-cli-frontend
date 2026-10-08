@@ -16,7 +16,14 @@
   border-radius: 5px;
 
   color: #ffffff;
+
+  /*
+    Match the font used in the
+    Account Overview / Balance.
+  */
+  font-family: "Lucida Console", "Courier New", monospace;
 }
+
 
 /*
   =========================
@@ -40,13 +47,67 @@
 
   color: #ffffff;
 
+  font-family: "Lucida Console", "Courier New", monospace;
+
   font-size: 20px;
   font-weight: 600;
 }
 
+
+/*
+  =========================
+  SEARCH FIELD
+  =========================
+
+  These colors match the inputs
+  in the Transaction component.
+*/
+
 .filter-field {
   width: 280px;
+
+  font-family: "Lucida Console", "Courier New", monospace;
+
+  /*
+    Match Transaction input border.
+  */
+  --mdc-outlined-text-field-outline-color: #262a47;
+  --mdc-outlined-text-field-hover-outline-color: #262a47;
+  --mdc-outlined-text-field-focus-outline-color: #262a47;
+
+  /*
+    Match Transaction input border radius.
+  */
+  --mdc-outlined-text-field-container-shape: 3px;
+
+  /*
+    Match Transaction input text colors.
+  */
+  --mdc-outlined-text-field-input-text-color: lightgray;
+  --mdc-outlined-text-field-label-text-color: lightgray;
+  --mdc-outlined-text-field-focus-label-text-color: lightgray;
 }
+
+/*
+  Angular Material creates an inner wrapper
+  around the input.
+
+  This gives that wrapper the same background
+  as the Transaction component inputs.
+*/
+:host ::ng-deep .filter-field .mat-mdc-text-field-wrapper {
+  background-color: #0D1C42;
+  border-radius: 3px;
+}
+
+/*
+  Make the text typed into the search box
+  use the same font as the rest of the app.
+*/
+:host ::ng-deep .filter-field input {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
 
 /*
   =========================
@@ -68,6 +129,7 @@
   border-radius: 4px;
 }
 
+
 /*
   =========================
   TABLE
@@ -80,6 +142,7 @@
   background-color: #010736;
 }
 
+
 /*
   Header cells:
   DATE / TYPE / AMOUNT
@@ -90,6 +153,8 @@
 
   color: #8490bd;
 
+  font-family: "Lucida Console", "Courier New", monospace;
+
   font-size: 12px;
   font-weight: 600;
 
@@ -98,6 +163,7 @@
 
   border-bottom: 1px solid #393f6a;
 }
+
 
 /*
   Transaction cells
@@ -108,19 +174,23 @@
 
   color: #e4e7f5;
 
+  font-family: "Lucida Console", "Courier New", monospace;
+
   font-size: 14px;
 
   border-bottom: 1px solid #202851;
 }
 
+
 /*
-  Spacing inside table cells
+  Spacing inside table cells.
 */
 
 .transaction-table th,
 .transaction-table td {
   padding: 16px 22px;
 }
+
 
 /*
   Highlight a row when hovering over it.
@@ -130,16 +200,67 @@
   background-color: #080f3d;
 }
 
+
 /*
-  Right-align money.
+  =========================
+  TRANSACTION TYPE
+  =========================
+
+  The JSON stores values like:
+
+  deposit
+  withdraw
+  transfer
+
+  This only changes how they LOOK:
+
+  Deposit
+  Withdraw
+  Transfer
+*/
+
+.type-cell {
+  text-transform: capitalize;
+}
+
+
+/*
+  =========================
+  AMOUNT
+  =========================
 */
 
 .amount-cell {
   text-align: right;
 }
 
+
 /*
-  No search results message
+  Money added to the account:
+  deposits and incoming transfers.
+*/
+
+.amount-positive {
+  color: #4caf50 !important;
+  font-weight: 600;
+}
+
+
+/*
+  Money removed from the account:
+  withdrawals and outgoing transfers.
+*/
+
+.amount-negative {
+  color: #ef5350 !important;
+  font-weight: 600;
+}
+
+
+/*
+  =========================
+  NO SEARCH RESULTS
+  =========================
 */
 
 .no-results {
@@ -150,27 +271,6 @@
   color: #8490bd !important;
 }
 
-/*
-  =========================
-  DATE VERSIONS
-  =========================
-
-  On normal/desktop screens:
-
-  Show:
-  2020-07-08 14:40:06-07
-
-  Hide:
-  2020-07-08
-*/
-
-.date-desktop {
-  display: inline;
-}
-
-.date-mobile {
-  display: none;
-}
 
 /*
   =========================
@@ -185,8 +285,21 @@
 
   color: #c5cae0;
 
+  font-family: "Lucida Console", "Courier New", monospace;
+
   border-top: 1px solid #393f6a;
 }
+
+
+/*
+  Make Angular Material's paginator text
+  use the same font too.
+*/
+
+:host ::ng-deep .history-paginator * {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
 
 /*
   =========================
@@ -198,6 +311,7 @@
 */
 
 @media (max-width: 700px) {
+
   /*
     Slightly reduce the padding around
     the entire history card.
@@ -205,6 +319,7 @@
   .history-container {
     padding: 12px;
   }
+
 
   /*
     Put the title and search box
@@ -218,6 +333,7 @@
     gap: 12px;
   }
 
+
   /*
     Search box fills the phone width.
   */
@@ -225,8 +341,9 @@
     width: 100%;
   }
 
+
   /*
-    Make sure the table can NEVER become
+    Make sure the table cannot become
     wider than its container.
   */
   .table-container {
@@ -235,18 +352,17 @@
     overflow: hidden;
   }
 
-  /*
-    table-layout: fixed is very important.
 
-    Instead of allowing text to decide
-    how wide columns become, WE decide
-    their widths below.
+  /*
+    table-layout: fixed lets us control
+    how much space each column receives.
   */
   .transaction-table {
     width: 100%;
 
     table-layout: fixed;
   }
+
 
   /*
     =========================
@@ -270,11 +386,10 @@
     text-align: right;
   }
 
-  /*
-    Reduce the large desktop padding.
 
-    This gives us much more room
-    for actual transaction data.
+  /*
+    Reduce desktop padding so there is
+    more room for the transaction data.
   */
   .transaction-table th,
   .transaction-table td {
@@ -285,25 +400,22 @@
     font-size: 13px;
   }
 
+
   /*
-    Prevent words like:
-
-    transfer
-    withdraw
-    deposit
-
+    Prevent Deposit / Withdraw / Transfer
     from breaking onto multiple lines.
   */
   .type-cell {
     white-space: nowrap;
   }
 
+
   /*
-    Keep money on one line as well.
+    Keep money on one line.
 
     We don't want:
 
-    $35
+    $350
     .00
   */
   .amount-cell {
@@ -312,32 +424,10 @@
     text-align: right;
   }
 
-  /*
-    =========================
-    MOBILE DATE
-    =========================
-
-    Hide:
-
-    2020-07-08 14:40:06-07
-
-    Show:
-
-    2020-07-08
-  */
-
-  .date-desktop {
-    display: none;
-  }
-
-  .date-mobile {
-    display: inline;
-
-    white-space: nowrap;
-  }
 
   /*
-    Slightly smaller column headings.
+    Slightly smaller column headings
+    for mobile screens.
   */
   .transaction-table th {
     font-size: 11px;
@@ -345,39 +435,14 @@
     letter-spacing: 0.5px;
   }
 
+
   /*
-    Give the paginator a reasonable
-    minimum amount of room.
+    Keep the paginator fitting comfortably
+    on smaller screens.
   */
   .history-paginator {
     width: 100%;
 
     font-size: 12px;
   }
-}
-/*
- * Money that came INTO the logged-in account.
- */
-.amount-positive {
-  color: #4caf50 !important;
-  font-weight: 600;
-}
-
-/*
- * Money that LEFT the logged-in account.
- */
-.amount-negative {
-  color: #ef5350 !important;
-  font-weight: 600;
-}
-/* Money added to the account */
-.amount-positive {
-  color: #4caf50 !important;
-  font-weight: 600;
-}
-
-/* Money removed from the account */
-.amount-negative {
-  color: #ef5350 !important;
-  font-weight: 600;
 }
