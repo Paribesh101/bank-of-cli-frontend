@@ -228,7 +228,7 @@ export class BankService {
   deposit(amount: number, description?: string): Observable<TransactionResult> {
     return this.runTransaction(() => {
       assertValidAmount(amount);
-      return this.api.deposit(this.requireAccountId(), amount);
+      return this.api.deposit(this.requireAccountId(), amount,description);
     });
   }
 
@@ -236,7 +236,7 @@ export class BankService {
     return this.runTransaction(() => {
       assertValidAmount(amount);
       assertSufficientFunds(this.balance(), amount);
-      return this.api.withdraw(this.requireAccountId(), amount);
+      return this.api.withdraw(this.requireAccountId(), amount,description);
     });
   }
 
@@ -251,7 +251,7 @@ export class BankService {
         throw new BankError('SAME_ACCOUNT', 'You cannot transfer money to your own account.');
       }
       assertSufficientFunds(this.balance(), amount);
-      return this.api.transfer(fromId, toAccountId, amount);
+      return this.api.transfer(fromId, toAccountId, amount,description);
     });
   }
 
