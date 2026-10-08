@@ -26,12 +26,12 @@
     </section>
 
     <section>
-        <div class="graph-icon">▂▅█</div>
+        <div class="graph-icon" [style.color]="netThisMonth() >= 0 ? '#597928' : '#B93636'">▂▅█</div>
         <div>
             <p class="moneyInOutText">
                 NET THIS MONTH
             </p>
-            <h4 class="moneyIn">
+            <h4 class="moneyIn" [style.color]="netThisMonth() >= 0 ? '#597928' : '#B93636'">
                 {{ netThisMonth() | currency}}
             </h4>
         </div>

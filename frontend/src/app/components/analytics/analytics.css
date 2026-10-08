@@ -47,7 +47,7 @@
 .netMonth {
     font-size: 25px;
     font-family: "Lucida Console", "Courier New", monospace;
-    color: #B93636;
+    /* color: #B93636; */
     letter-spacing: 3px;
     margin: 0;
 }
