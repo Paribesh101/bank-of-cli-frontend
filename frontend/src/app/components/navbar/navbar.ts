@@ -34,7 +34,7 @@ export class Navbar {
 
   private logout() {
     this.userService.logout();
-    this.router.navigate(["/"])
+    this.router.navigate(['/'], { onSameUrlNavigation: 'reload' });
   }
 
 }
