@@ -7,22 +7,22 @@ h1 {
     margin-bottom: 8px;
     font-size: 12px;
     font-family: "Lucida Console", "Courier New", monospace;
-    color: lightgray;
-    letter-spacing: 1px;
+    font-weight: normal;
+    color: #757D6F;
 }
 
 form {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: center;
+    gap: 16px;
 }
 
 input, select {
     box-sizing: border-box;
     padding: 8px;
-    height: 32px;
-    width: 100%;
+    height: 40px;
+    width: stretch;
     border: solid 1px #262a47;
     border-radius: 3px;
     background-color: #0D1C42;
@@ -33,10 +33,24 @@ input, select {
 
 button {
     box-sizing: border-box;
-    padding: 4px 8px;
-    border-radius: 3px;
+    height: 40px;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
     font-family: "Lucida Console", "Courier New", monospace;
     font-weight: bold;
+}
+button:hover {
+    background-color:lightgray;
+    outline: solid 1px white;
+    outline-offset: -1px;
+}
+
+button:active {
+    background-color: #0D1C42;
+    outline: solid 1px #262a47;
+    outline-offset: -1px;
+    color: white;
 }
 
 button:not(:disabled):hover, select:hover {
@@ -50,24 +64,28 @@ button:not(:disabled):hover, select:hover {
     background-color: #010736;
 }
 
-.field-container {
+/* .field-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-}
+    justify-content: center;
+    flex: 1;
+    gap: 16px;
+} */
 
 .stretch-field {
     width: stretch;
-    min-width: 110px;
+    min-width: 120px;
 }
 
 .normal-field {
-    width:120px
+    flex: 1;
+    min-width:120px;
 }
 
 .money-field {
     display: flex;
-    width: 120px;
+    flex: 1;
+    min-width: 120px;
     align-items: center;
     border: solid 1px #262a47;
     border-radius: 3px;
@@ -81,8 +99,7 @@ button:not(:disabled):hover, select:hover {
 }
 
 .money-field input {
-    height: 100%;
-    width: 110px;
+    width: stretch;
     align-items: center;
     border: none;
     background-color: transparent;
