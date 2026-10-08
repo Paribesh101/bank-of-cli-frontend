@@ -2,8 +2,6 @@ import { Component, inject } from '@angular/core';
 import { BankService } from '../../service/bank.service';
 import { CommonModule } from '@angular/common';
 import { Spinner } from '../spinner/spinner';
-import { getAccountById } from '../../mock/api';
-
 
 @Component({
   imports: [CommonModule, Spinner],
@@ -18,7 +16,7 @@ export class AccountOverview {
   readonly lastUpdated = this.bankService.lastUpdated;
   readonly isLoading = this.bankService.isLoading;
   readonly firstName = this.bankService.firstName;
-  username = '';
+  //username = '';
 
   // constructor() {
   //   this.bankService.loadAccount(4).subscribe();

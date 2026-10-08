@@ -32,7 +32,7 @@
     color: #597928;
     letter-spacing: 3px;
     margin: 0;
-    font-size: clamp(1rem, 2.5vw, 2rem);
+    font-size: clamp(1rem, 1.5vw, 2rem);
 }
 
 .moneyOut {
@@ -41,7 +41,7 @@
     color: #B93636;
     letter-spacing: 3px;
     margin: 0;
-    font-size: clamp(1rem, 2.5vw, 2rem);
+    font-size: clamp(1rem, 1.5vw, 2rem);
 }
 
 .netMonth {
