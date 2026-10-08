@@ -20,9 +20,10 @@ export class Transaction {
   amount: number = 0.00;
   description: string = ''
 
-  ngOnInit() {
-    this.bankService.loadAccount(Number(this.accountId || 0)).subscribe();
-  }
+  // ngOnInit() {
+  //   console.log("init");
+  //   this.bankService.loadAccount(this.accountId).subscribe();
+  // }
 
   onSubmit() {
     console.log(this.accountId, this.type, this.relatedAccountId, this.amount, this.description);
