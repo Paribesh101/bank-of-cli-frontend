@@ -69,7 +69,7 @@ export class User {
 
   }
 
-  logout(): void{
+  logout(): void {
     sessionStorage.clear();
   }
 

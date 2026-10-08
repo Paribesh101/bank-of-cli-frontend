@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UserError } from '../../service/user';
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../service/toast';
 
 /**
  * Handles user login functionality.
@@ -32,7 +33,6 @@ export class Login {
   private router = inject(Router);
   private userService = inject(User);
   private mode = signal("login");
-
   
 
   /**
