@@ -1,5 +1,9 @@
+/*
+  Apply the same font to everything
+  inside this component.
+*/
 * {
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 }
 
 /*
@@ -21,10 +25,6 @@
 
   color: #ffffff;
 
-  /*
-    Match the font used in the
-    Account Overview / Balance.
-  */
   font-family: 'Lucida Console', 'Courier New', monospace;
 }
 
@@ -36,6 +36,7 @@
 
 .history-header {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
 
@@ -44,19 +45,21 @@
   margin-bottom: 16px;
 }
 
+/*
+  These are the updated title styles
+  added by the team.
+*/
 .history-header h2 {
   margin: 0;
 
-  color: #ffffff;
+  font-size: 12px;
 
   font-family: 'Lucida Console', 'Courier New', monospace;
 
-  font-weight: 600;
-
-  font-size: 12px;
-  font-family: "Lucida Console", "Courier New", monospace;
   font-weight: normal;
-  color: #757D6F; 
+
+  color: #757d6f;
+
   letter-spacing: 5px;
 }
 
@@ -64,9 +67,6 @@
   =========================
   SEARCH FIELD
   =========================
-
-  These colors match the inputs
-  in the Transaction component.
 */
 
 .filter-field {
@@ -94,17 +94,28 @@
   --mdc-outlined-text-field-focus-label-text-color: lightgray;
 }
 
+/*
+  These input styles were added by the team.
+*/
 .filter-field input {
   box-sizing: border-box;
+
   padding: 8px;
+
   height: 10px;
   min-height: 10px;
+
   width: stretch;
+
   border: solid 1px #262a47;
   border-radius: 3px;
-  background-color: #0D1C42;
+
+  background-color: #0d1c42;
+
   color: lightgray;
-  font-family: "Lucida Console", "Courier New", monospace;
+
+  font-family: 'Lucida Console', 'Courier New', monospace;
+
   align-items: center;
 }
 
@@ -117,27 +128,30 @@
 */
 :host ::ng-deep .filter-field .mat-mdc-text-field-wrapper {
   background-color: #0d1c42;
+
   border-radius: 3px;
 }
 
 /*
-  Make the text typed into the search box
-  use the same font as the rest of the app.
-*/
-/*
   Text the user types into the search box.
+
   Angular Material applies its own input color,
-  so we target the Material input directly.
+  so we target its Material input class.
 */
 :host ::ng-deep .filter-field .mat-mdc-input-element {
   font-family: 'Lucida Console', 'Courier New', monospace;
 
   color: #ffffff !important;
+
   caret-color: #ffffff !important;
 
-  /* Helps make sure Chrome displays the typed text as white. */
+  /*
+    Helps make sure Chrome displays
+    the typed text as white.
+  */
   -webkit-text-fill-color: #ffffff !important;
 }
+
 /*
   =========================
   TABLE CONTAINER
@@ -146,15 +160,17 @@
 
 .table-container {
   width: 100%;
+
   box-sizing: border-box;
 
   /*
-    We do NOT want the transaction history
-    to create a horizontal scrollbar.
+    Prevent the transaction history
+    from creating a horizontal scrollbar.
   */
   overflow: hidden;
 
   border: 1px solid #393f6a;
+
   border-radius: 4px;
 }
 
@@ -174,7 +190,6 @@
   Header cells:
   DATE / TYPE / AMOUNT
 */
-
 .transaction-table th {
   background-color: #080f3d;
 
@@ -183,18 +198,19 @@
   font-family: 'Lucida Console', 'Courier New', monospace;
 
   font-size: 12px;
+
   font-weight: 600;
 
   text-transform: uppercase;
+
   letter-spacing: 1px;
 
   border-bottom: 1px solid #393f6a;
 }
 
 /*
-  Transaction cells
+  Transaction cells.
 */
-
 .transaction-table td {
   background-color: #010736;
 
@@ -210,16 +226,15 @@
 /*
   Spacing inside table cells.
 */
-
 .transaction-table th,
 .transaction-table td {
   padding: 16px 22px;
 }
 
 /*
-  Highlight a row when hovering over it.
+  Highlight a transaction row
+  when hovering over it.
 */
-
 .transaction-table tr.mat-mdc-row:hover td {
   background-color: #080f3d;
 }
@@ -229,13 +244,13 @@
   TRANSACTION TYPE
   =========================
 
-  The JSON stores values like:
+  The actual data can still be:
 
   deposit
   withdraw
   transfer
 
-  This only changes how they LOOK:
+  This makes it LOOK like:
 
   Deposit
   Withdraw
@@ -254,24 +269,217 @@
 
 .amount-cell {
   text-align: right;
+
+  /*
+    Helps keep the amount and expand arrow
+    together on one line.
+  */
+  white-space: nowrap;
 }
 
 /*
-  Money added to the account:
-  deposits and incoming transfers.
-*/
+  Updated positive color from the team.
 
+  Deposits and incoming transfers.
+*/
 .amount-positive {
   color: #597928 !important;
 }
 
 /*
-  Money removed from the account:
-  withdrawals and outgoing transfers.
+  Updated negative color from the team.
+
+  Withdrawals and outgoing transfers.
+*/
+.amount-negative {
+  color: #b93636 !important;
+}
+
+/*
+  ============================================================
+  EXPANDABLE ROW CHANGE
+  ============================================================
+
+  The normal transaction row is now clickable.
+
+  cursor: pointer gives the user the hand cursor
+  so they know the row can be clicked.
 */
 
-.amount-negative {
-  color: #B93636 !important;
+.transaction-row {
+  cursor: pointer;
+}
+
+/*
+  ============================================================
+  EXPANDABLE ROW CHANGE
+  ============================================================
+
+  This styles the little arrow beside the amount.
+
+  Closed:
+      ▼
+
+  Open:
+      ▲
+*/
+
+.expand-arrow {
+  display: inline-block;
+
+  margin-left: 10px;
+
+  color: #8490bd;
+
+  font-size: 10px;
+
+  font-weight: normal;
+}
+
+/*
+  ============================================================
+  EXPANDABLE ROW CHANGE
+  ============================================================
+
+  The detail row is the SECOND Material row
+  belonging to each transaction.
+
+  When closed, we do not want this row
+  taking up extra space.
+*/
+
+.detail-row {
+  height: 0;
+}
+
+/*
+  Normal table cells have padding.
+
+  We remove that padding from the special
+  hidden detail row so it does not create
+  an empty gap when collapsed.
+*/
+
+.detail-row td {
+  padding: 0 !important;
+
+  border-bottom: none;
+}
+
+/*
+  ============================================================
+  EXPANDABLE ROW CHANGE
+  ============================================================
+
+  This contains the actual description.
+
+  CLOSED STATE:
+
+      max-height: 0
+          gives it no visible height.
+
+      opacity: 0
+          makes it invisible.
+
+      overflow: hidden
+          hides the text while closed.
+*/
+
+.transaction-detail {
+  box-sizing: border-box;
+
+  max-height: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  padding: 0 22px;
+
+  background-color: #080f3d;
+
+  color: #c5cae0;
+
+  /*
+    This gives the opening/closing
+    a small animation.
+  */
+  transition:
+    max-height 0.25s ease,
+    opacity 0.25s ease,
+    padding 0.25s ease;
+}
+
+/*
+  ============================================================
+  EXPANDABLE ROW CHANGE
+  ============================================================
+
+  Angular adds this class when:
+
+      isExpanded(transaction)
+
+  is true.
+
+  This is the OPEN state.
+*/
+
+.transaction-detail-expanded {
+  max-height: 100px;
+
+  opacity: 1;
+
+  padding: 14px 22px;
+
+  border-bottom: 1px solid #202851;
+}
+
+/*
+  ============================================================
+  EXPANDABLE ROW CHANGE
+  ============================================================
+
+  Styles the word:
+
+      Description:
+*/
+
+.description-label {
+  color: #8490bd;
+
+  font-weight: 600;
+
+  margin-right: 10px;
+}
+
+/*
+  ============================================================
+  EXPANDABLE ROW CHANGE
+  ============================================================
+
+  Styles the actual description text.
+
+  Example:
+
+      Description: Monthly rent
+                   ^^^^^^^^^^^^
+*/
+
+.description-text {
+  color: #e4e7f5;
+}
+
+/*
+  ============================================================
+  EXPANDABLE ROW CHANGE
+  ============================================================
+
+  Keep the main transaction row highlighted
+  while its description is open.
+*/
+
+.transaction-row.expanded-row td {
+  background-color: #080f3d;
 }
 
 /*
@@ -396,7 +604,7 @@
 
   /*
     Reduce desktop padding so there is
-    more room for the transaction data.
+    more room for transaction data.
   */
   .transaction-table th,
   .transaction-table td {
@@ -417,11 +625,6 @@
 
   /*
     Keep money on one line.
-
-    We don't want:
-
-    $350
-    .00
   */
   .amount-cell {
     white-space: nowrap;
@@ -431,7 +634,7 @@
 
   /*
     Slightly smaller column headings
-    for mobile screens.
+    on mobile.
   */
   .transaction-table th {
     font-size: 11px;
@@ -447,5 +650,55 @@
     width: 100%;
 
     font-size: 12px;
+  }
+
+  /*
+    ========================================================
+    EXPANDABLE ROW CHANGE - MOBILE
+    ========================================================
+
+    Do not let the normal mobile td padding
+    add empty space to the collapsed detail row.
+  */
+
+  .detail-row td {
+    padding: 0 !important;
+  }
+
+  /*
+    ========================================================
+    EXPANDABLE ROW CHANGE - MOBILE
+    ========================================================
+
+    Use less left/right space for descriptions
+    on smaller screens.
+  */
+
+  .transaction-detail {
+    padding-left: 8px;
+
+    padding-right: 8px;
+
+    font-size: 12px;
+  }
+
+  /*
+    When opened, give the description
+    some vertical breathing room.
+  */
+
+  .transaction-detail-expanded {
+    padding-top: 12px;
+
+    padding-bottom: 12px;
+  }
+
+  /*
+    Move the arrow slightly closer to
+    the amount on a narrow screen.
+  */
+
+  .expand-arrow {
+    margin-left: 4px;
   }
 }
