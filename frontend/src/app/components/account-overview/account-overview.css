@@ -30,12 +30,21 @@
     margin-bottom: 20px;
 }
 
-.balance {
-    /* font-size: 42px; */
+/* .balance {
+     font-size: 42px; 
     font-family: "Lucida Console", "Courier New", monospace;
     letter-spacing: 3px;
     margin: 0;
     font-size: clamp(2rem, 5vw, 3rem);
+} */
+
+
+.balance {
+  font-size: clamp(1.5rem, 7vw, 3rem);
+  line-height: 1.3;
+  overflow: visible;
+  height: auto;
+  margin: 0.2em 0;
 }
 
 .last-updated {
