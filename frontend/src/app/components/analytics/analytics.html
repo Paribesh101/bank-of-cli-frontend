@@ -32,7 +32,7 @@
                 NET THIS MONTH
             </p>
             <h4 class="moneyIn" [style.color]="netThisMonth() >= 0 ? '#597928' : '#B93636'">
-                {{ netThisMonth() | currency}}
+                {{ netThisMonth() > 0 ? '+' : '' }}{{ netThisMonth() | currency }}
             </h4>
         </div>
     </section>
