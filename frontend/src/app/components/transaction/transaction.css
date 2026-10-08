@@ -74,18 +74,18 @@ button:not(:disabled):hover, select:hover {
 
 .stretch-field {
     width: stretch;
-    min-width: 104px;
+    min-width: 120px;
 }
 
 .normal-field {
     flex: 1;
-    min-width:104px;
+    min-width:120px;
 }
 
 .money-field {
     display: flex;
     flex: 1;
-    min-width: 104px;
+    min-width: 120px;
     align-items: center;
     border: solid 1px #262a47;
     border-radius: 3px;
