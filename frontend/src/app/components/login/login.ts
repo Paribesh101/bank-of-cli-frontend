@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UserError } from '../../service/user';
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../service/toast';
 
 /**
  * Handles user login functionality.
@@ -32,7 +33,6 @@ export class Login {
   private router = inject(Router);
   private userService = inject(User);
   private mode = signal("login");
-
   
 
   /**
@@ -46,8 +46,17 @@ export class Login {
       await this.router.navigate(['dashboard']);
     } else {
       this.errorMessage = 'login failed, please try again';
+      
     }
   }
+
+  setMode(newMode: 'login' | 'register') {
+  this.mode.set(newMode);
+  this.errorMessage = '';
+  this.successMessage = '';
+  this.passwordInput = '';
+  this.confirmPasswordInput = '';
+}
 
   attemptRegister() {
     this.errorMessage = '';

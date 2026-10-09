@@ -26,6 +26,7 @@ const registered: Account[] = [];
 
 export function addAccount(account: Account): Account {
     // Pretends to add an account and return it with the id and balance filled
+
     const all = getAccounts();
     const nextId = all.reduce((max, a) => Math.max(max, a.id ?? 0), 0) + 1;
 
