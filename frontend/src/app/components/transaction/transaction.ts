@@ -1,6 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { BankService } from '../../service/bank.service';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, NgForm } from '@angular/forms'; 
 import { ToastService } from '../../service/toast';
 
 @Component({
@@ -27,7 +27,7 @@ export class Transaction {
   //   this.bankService.loadAccount(this.accountId).subscribe();
   // }
 
-  onSubmit() {
+  onSubmit(form: NgForm) {
     console.log(this.accountId, this.type, this.relatedAccountId, this.amount, this.description);
 
     switch (this.type) {
@@ -35,7 +35,7 @@ export class Transaction {
         this.bankService.deposit(this.amount, this.description).subscribe({
           next: value => {
             this.toastService.success("Deposit successful!"),
-            this.resetForm();
+            this.resetForm(form);
           },
           error: err => this.toastService.error(err.message)
       });
@@ -45,7 +45,7 @@ export class Transaction {
         this.bankService.withdraw(this.amount, this.description).subscribe({
           next: value => {
             this.toastService.success("Withdraw successful!")
-            this.resetForm();
+            this.resetForm(form);
           },
           error: err => this.toastService.error(err.message)
         });
@@ -55,7 +55,7 @@ export class Transaction {
         this.bankService.transfer(this.relatedAccountId == null ? -1 : this.relatedAccountId, this.amount, this.description).subscribe({
           next: value => {
             this.toastService.success("Transfer successful!");
-            this.resetForm();
+            this.resetForm(form);
           },
           error: err => this.toastService.error(err.message)
         });
@@ -66,9 +66,12 @@ export class Transaction {
     }
   }
 
-  private resetForm() {
-    this.relatedAccountId = null;
-    this.amount = 0.00;
-    this.description = '';
+  private resetForm(form: NgForm) {
+    form.resetForm({
+      description: '',
+      type: this.type,
+      relatedAccountId: null,
+      amount: 0.00,
+    });
   }
 }
