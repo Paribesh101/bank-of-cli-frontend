@@ -709,10 +709,3 @@
   opacity: 1 !important;
 }
 }
-
-:host ::ng-deep
-.transaction-table
-.mat-sort-header-arrow {
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
