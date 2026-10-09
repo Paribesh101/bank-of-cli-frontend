@@ -1,6 +1,6 @@
 <div class="container">
     <h1>MAKE A TRANSACTION</h1>
-    <form #transactionForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #transactionForm="ngForm" (ngSubmit)="onSubmit(transactionForm)">
         <div class="stretch-field">
             <input type="text" name="description" [(ngModel)]="description" placeholder="Description" class="description">
         </div>

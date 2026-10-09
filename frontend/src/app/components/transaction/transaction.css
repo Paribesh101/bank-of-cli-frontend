@@ -30,6 +30,15 @@ input, select {
     align-items: center;
 }
 
+input:hover, select:hover {
+    background-color: #11224d;
+}
+
+input:focus, select:focus {
+    background-color: #152858;
+    outline: none;
+}
+
 button {
     box-sizing: border-box;
     height: 40px;
@@ -101,6 +110,15 @@ button:not(:disabled):hover, select:hover {
     align-items: center;
     border: none;
     background-color: transparent;
+}
+
+.money-field:hover {
+    background-color: #11224d;
+}
+
+.money-field:focus-within {
+    background-color: #152858;
+    outline: none;
 }
 
 /* .show {

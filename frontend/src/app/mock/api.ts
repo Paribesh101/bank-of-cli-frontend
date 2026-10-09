@@ -43,7 +43,6 @@ export function addAccount(account: Account): Account {
 
 }   
 
-
 export function getAccounts() {
     return [...accounts.map(a => mapAccount(a as JsonAccount)), ...registered];
 }
